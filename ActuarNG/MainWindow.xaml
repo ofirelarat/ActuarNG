@@ -12,24 +12,67 @@
         <!-- Nav bar panel -->
         <TabControl
             Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
-                <TabItem
-                    Header="{materialDesign:PackIcon Kind=Head, Size=24}"
+            <TabItem
+                    Header="{materialDesign:PackIcon Kind=AccountPlus, Size=24}"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
-                        <TextBlock>
-                            <Run
-                                Text="tab 1 content. Default look and behaviors." />
-                            <LineBreak />
-                            <LineBreak />
-                            <Run
-                                FontStyle="Italic">
-                                Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-                            </Run>  
-                        </TextBlock>
-                </TabItem>
-                <TabItem
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                                Grid.Column="1"
+                                Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                Text= "יצירת טופס בקשה לעבודה"
+                                HorizontalAlignment="Center">
+                    </TextBlock>
+                    <TextBox
+                              x:Name="fullName"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                              HorizontalContentAlignment="Right"
+                              materialDesign:HintAssist.Hint="שם מלא"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                              VerticalAlignment="Center" TextChanged="TextBox_TextChanged" />
+                    <TextBox
+                              x:Name="birthDate"
+                              Grid.Column="1"
+                              Grid.Row="2"
+                              HorizontalContentAlignment="Right"
+                              materialDesign:HintAssist.Hint="תאריך לידה"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                              VerticalAlignment="Center" TextChanged="TextBox_TextChanged" />
+                    <TextBox
+                              x:Name="gender"
+                              Grid.Column="1"
+                              Grid.Row="3"
+                              HorizontalContentAlignment="Right"
+                              materialDesign:HintAssist.Hint="מין"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                              VerticalAlignment="Center" TextChanged="TextBox_TextChanged" />
+                    <Button
+                              x:Name="newPersonForm"
+                              Grid.Column="1"
+                              Grid.Row="6"
+                              Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                              Width="250"
+                              ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                              Content="יצירת טופס" Click="NewPersonBtn_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem
                     Header="{materialDesign:PackIcon Kind=Spade, Size=24}"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
-                        <TextBlock>
+                <TextBlock>
                             <Run
                             Text="tab 2 content. Default look and behaviors." />
                             <LineBreak />
@@ -37,9 +80,9 @@
                             <Run
                                 FontStyle="Italic">
                                 Praesent sed dui arcu. Vivamus porta auctor sagittis
-                            </Run>      
-                        </TextBlock>
-                </TabItem>
+                            </Run>
+                </TextBlock>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

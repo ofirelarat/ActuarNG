@@ -24,5 +24,12 @@ namespace ActuarNG
         {
             InitializeComponent();
         }
+
+        private void NewPersonBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string n = fullName.Text;
+            string g = gender.Text;
+            string d = birthDate.Text;
+        }
     }
 }
