@@ -3,36 +3,43 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialMenu="clr-namespace:MaterialMenu;assembly=MaterialMenu"
         xmlns:local="clr-namespace:ActuarNG"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
          Foreground="WhiteSmoke"
         Title="ActuarNG" Height="450" Width="800">
     <Grid>
-
         <!-- Nav bar panel -->
-        <materialMenu:SideMenu HorizontalAlignment="Left" x:Name="Menu"
-                               MenuWidth="300"
-                               Theme="Default"
-                               State="Hidden" Margin="300,0,0,0">
-            <materialMenu:SideMenu.Menu>
-                <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                    <StackPanel Orientation="Vertical">
-                        <Border Background="#337AB5">
-                            <Grid Margin="10">
-                                <TextBox Height="150" BorderThickness="0" Background="Transparent"
-                                    VerticalContentAlignment="Bottom" FontFamily="Calibri" FontSize="18"
-                                    Foreground="WhiteSmoke" FontWeight="Bold">Welcome</TextBox>
-                            </Grid>
-                        </Border>
-                        <materialMenu:MenuButton Text="Administration"></materialMenu:MenuButton>
-                        <materialMenu:MenuButton Text="Packing"></materialMenu:MenuButton>
-                        <materialMenu:MenuButton Text="Logistics"></materialMenu:MenuButton>
-                    </StackPanel>
-                </ScrollViewer>
-            </materialMenu:SideMenu.Menu>
-        </materialMenu:SideMenu>
-
-
+        <TabControl
+            Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
+                <TabItem
+                    Header="{materialDesign:PackIcon Kind=Head, Size=24}"
+                    Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <TextBlock>
+                            <Run
+                                Text="tab 1 content. Default look and behaviors." />
+                            <LineBreak />
+                            <LineBreak />
+                            <Run
+                                FontStyle="Italic">
+                                Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+                            </Run>  
+                        </TextBlock>
+                </TabItem>
+                <TabItem
+                    Header="{materialDesign:PackIcon Kind=Spade, Size=24}"
+                    Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <TextBlock>
+                            <Run
+                            Text="tab 2 content. Default look and behaviors." />
+                            <LineBreak />
+                            <LineBreak />
+                            <Run
+                                FontStyle="Italic">
+                                Praesent sed dui arcu. Vivamus porta auctor sagittis
+                            </Run>      
+                        </TextBlock>
+                </TabItem>
+        </TabControl>
     </Grid>
 </Window>
