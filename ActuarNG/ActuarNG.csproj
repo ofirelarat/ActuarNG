@@ -11,4 +11,9 @@
     <PackageReference Include="MaterialMenu" Version="0.0.4.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\PDFGeneratorLogic\DocsGeneratorLogic.csproj" />
+  </ItemGroup>
+
 </Project>

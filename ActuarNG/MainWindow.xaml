@@ -30,6 +30,7 @@
                         <RowDefinition Height="2*" />
                     </Grid.RowDefinitions>
                     <TextBlock
+                                Grid.Row="0"
                                 Grid.Column="1"
                                 Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                                 Text= "יצירת טופס בקשה לעבודה"
@@ -42,27 +43,35 @@
                               HorizontalContentAlignment="Right"
                               materialDesign:HintAssist.Hint="שם מלא"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                              VerticalAlignment="Center" TextChanged="TextBox_TextChanged" />
+                              VerticalAlignment="Center" />
                     <TextBox
-                              x:Name="birthDate"
+                              x:Name="id"
                               Grid.Column="1"
                               Grid.Row="2"
                               HorizontalContentAlignment="Right"
-                              materialDesign:HintAssist.Hint="תאריך לידה"
+                              materialDesign:HintAssist.Hint="מס' ת.ז"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                              VerticalAlignment="Center" TextChanged="TextBox_TextChanged" />
+                              VerticalAlignment="Center" />
                     <TextBox
-                              x:Name="gender"
+                              x:Name="phoneNum"
                               Grid.Column="1"
                               Grid.Row="3"
                               HorizontalContentAlignment="Right"
-                              materialDesign:HintAssist.Hint="מין"
+                              materialDesign:HintAssist.Hint="טלפון ליצירת קשר"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                              VerticalAlignment="Center" TextChanged="TextBox_TextChanged" />
+                              VerticalAlignment="Center" />
+                    <TextBox
+                              x:Name="email"
+                              Grid.Column="1"
+                              Grid.Row="4"
+                              HorizontalContentAlignment="Right"
+                              materialDesign:HintAssist.Hint="E-MAIL"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                              VerticalAlignment="Center" />
                     <Button
                               x:Name="newPersonForm"
                               Grid.Column="1"
-                              Grid.Row="6"
+                              Grid.Row="5"
                               Style="{StaticResource MaterialDesignRaisedAccentButton}"
                               Width="250"
                               ToolTip="Resource name: MaterialDesignRaisedAccentButton"
@@ -72,16 +81,21 @@
             <TabItem
                     Header="{materialDesign:PackIcon Kind=Spade, Size=24}"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
-                <TextBlock>
-                            <Run
-                            Text="tab 2 content. Default look and behaviors." />
-                            <LineBreak />
-                            <LineBreak />
-                            <Run
-                                FontStyle="Italic">
-                                Praesent sed dui arcu. Vivamus porta auctor sagittis
-                            </Run>
-                </TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox
+                              x:Name="destenation_folder"
+                              Grid.Column="1"
+                              Grid.Row="4"
+                              HorizontalContentAlignment="Right"
+                              materialDesign:HintAssist.Hint="תיקיית יעד"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                              VerticalAlignment="Center" />
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

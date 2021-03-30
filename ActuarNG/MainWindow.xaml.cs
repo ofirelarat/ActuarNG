@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Common.Models;
+using PDFGeneratorLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,9 +29,17 @@ namespace ActuarNG
 
         private void NewPersonBtn_Click(object sender, RoutedEventArgs e)
         {
-            string n = fullName.Text;
-            string g = gender.Text;
-            string d = birthDate.Text;
+            ContactFormPerson contactForm = new ContactFormPerson()
+            {
+                FullName = fullName.Text,
+                Id = id.Text,
+                EmailAddress = email.Text,
+                PhoneNumber = phoneNum.Text
+            };
+
+            DocxGenerator docxGenerator = new DocxGenerator(contactForm);
+
+            docxGenerator.GenerateNewPersonWord();
         }
     }
 }
