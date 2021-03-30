@@ -19,7 +19,7 @@ namespace PDFGeneratorLogic
 
         public DocxGenerator(ContactFormPerson contactForm)
         {
-            destFile = System.IO.Path.Combine(targetPath, fileName);
+            destFile = System.IO.Path.Combine(targetPath, $"טופס_הזמנת_עבודה_{contactForm.Id}.docx");
             contactFormPerson = contactForm;
         }
 
