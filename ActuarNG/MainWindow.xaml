@@ -79,7 +79,7 @@
                 </Grid>
             </TabItem>
             <TabItem
-                    Header="{materialDesign:PackIcon Kind=Spade, Size=24}"
+                    Header="{materialDesign:PackIcon Kind=Cog, Size=24}"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                 <Grid>
                     <Grid.ColumnDefinitions>
