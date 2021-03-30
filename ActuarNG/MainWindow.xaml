@@ -87,14 +87,34 @@
                         <ColumnDefinition Width="5*" />
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                Text= "הגדרות המערכת"
+                                HorizontalAlignment="Center">
+                    </TextBlock>
                     <TextBox
                               x:Name="destenation_folder"
                               Grid.Column="1"
-                              Grid.Row="4"
+                              Grid.Row="1"
                               HorizontalContentAlignment="Right"
                               materialDesign:HintAssist.Hint="תיקיית יעד"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                               VerticalAlignment="Center" />
+                    <Button
+                              x:Name="saveSettingsConfig"
+                              Grid.Column="1"
+                              Grid.Row="2"
+                              Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                              Width="250"
+                              ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                              Content="שמירה" Click="SaveSettingsConfig_Click" />
                 </Grid>
             </TabItem>
         </TabControl>

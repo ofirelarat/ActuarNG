@@ -45,5 +45,16 @@ namespace ActuarNG
 
             docxGenerator.GenerateNewPersonWord();
         }
+
+        private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsConfig settingsConfig = new SettingsConfig()
+            {
+                DestenationPath = destenation_folder.Text
+            };
+
+            ConfigMgr configMgr = new ConfigMgr();
+            configMgr.SetSettings(settingsConfig);
+        }
     }
 }
