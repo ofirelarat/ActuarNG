@@ -35,10 +35,13 @@ namespace ActuarNG
         {
             ContactFormPerson contactForm = new ContactFormPerson()
             {
-                FullName = fullName.Text,
-                Id = id.Text,
-                EmailAddress = email.Text,
-                PhoneNumber = phoneNum.Text
+                Person_1 = new Person()
+                {
+                    FullName = fullName.Text,
+                    Id = id.Text,
+                    EmailAddress = email.Text,
+                    PhoneNumber = phoneNum.Text
+                }
             };
 
             DocxGenerator docxGenerator = new DocxGenerator(contactForm);

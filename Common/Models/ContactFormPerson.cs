@@ -6,10 +6,11 @@ namespace Common.Models
 {
     public class ContactFormPerson
     {
-        public string FullName { get; set; }
-        public string Id { get; set; }
-        public string PhoneNumber { get; set; }
-        public string EmailAddress { get; set; }
-
+        public CaseDetails CaseInfo { get; set; }
+        public Person Person_1 { get; set; }
+        public Person Person_2 { get; set; }
+        public DateTime PartnershipStartDate { get; set; }
+        public DateTime PartnershipEndDate { get; set; }
+        public DateTime CreationDate { get; set; }
     }
 }
