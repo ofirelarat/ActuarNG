@@ -1,6 +1,7 @@
 ﻿using Common.Models;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using SettingMgr;
 using System;
 
 namespace PDFGeneratorLogic
@@ -10,10 +11,11 @@ namespace PDFGeneratorLogic
         const string fileName = "test.docx";
         const string sourceFile = @"./resources/new_person_contact_form_template.docx";
 
-        private readonly string targetPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         private string destFile;
 
         private ContactFormPerson contactFormPerson;
+        private string targetPath = new ConfigMgr().GetDestenationPath();
+        //private readonly string targetPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         public DocxGenerator(ContactFormPerson contactForm)
         {

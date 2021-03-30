@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\SettingMgr\SettingMgr.csproj" />
   </ItemGroup>
 
 </Project>
