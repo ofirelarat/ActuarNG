@@ -1,5 +1,6 @@
 ﻿using Common.Models;
 using PDFGeneratorLogic;
+using SettingMgr;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,9 @@ namespace ActuarNG
         public MainWindow()
         {
             InitializeComponent();
+            
+            ConfigMgr configMgr = new ConfigMgr();
+            destenation_folder.Text = configMgr.GetDestenationPath();
         }
 
         private void NewPersonBtn_Click(object sender, RoutedEventArgs e)

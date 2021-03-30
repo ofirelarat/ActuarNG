@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\PDFGeneratorLogic\DocsGeneratorLogic.csproj" />
+    <ProjectReference Include="..\SettingMgr\SettingMgr.csproj" />
   </ItemGroup>
 
 </Project>
