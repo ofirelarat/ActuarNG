@@ -30,7 +30,7 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-                                Text= "יצירת טופס בקשה לעבודה"
+                                Text= "יצירת טפסי לקוחות אוטומטית"
                                 HorizontalAlignment="Center">
                     </TextBlock>
                     <Grid
@@ -66,7 +66,7 @@
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד הקרע"
                                   VerticalAlignment="Center" />
-                       <TextBox
+                        <TextBox
                                   x:Name="fullName_1"
                                   Grid.Row="0"
                                   Grid.Column="4"
@@ -147,14 +147,46 @@
                                   materialDesign:HintAssist.Hint="תאריך לידה אישה"
                                   VerticalAlignment="Center" />
                     </Grid>
-                    <Button
-                              x:Name="newPersonForm"
-                              Grid.Column="1"
-                              Grid.Row="5"
-                              Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                              Width="250"
-                              ToolTip="Resource name: MaterialDesignRaisedAccentButton"
-                              Content="יצירת טופס" Click="NewPersonBtn_Click" />
+                    <Grid
+                        Grid.Row="2"
+                        Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                                  x:Name="newPersonForm"
+                                  Grid.Column="4"
+                                  Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                                  ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                  Content="טופס בקשת עבודה" Click="NewPersonBtn_Click" />
+                        <Button
+                                  x:Name="newPersonEconomyDetailForm"
+                                  Grid.Column="2"
+                                  Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                                  ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                  Content="טופס הזנת נתונים" />
+                        <Button
+                                  x:Name="newPersonEmpowerForm"
+                                  Grid.Column="0"
+                                  Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                                  ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                  Content="טופס ייפוי כוח" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem
+                    Header="{materialDesign:PackIcon Kind=AccountGroupOutline, Size=24}"
+                    Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                <Grid>
+                    <TextBlock
+                                Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                Text= "סטטוס לקוחות"
+                                HorizontalAlignment="Center">
+                    </TextBlock>
                 </Grid>
             </TabItem>
             <TabItem

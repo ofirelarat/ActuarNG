@@ -8,7 +8,6 @@ namespace PDFGeneratorLogic
 {
     public class DocxGenerator
     {
-        const string fileName = "test.docx";
         const string sourceFile = @"./resources/new_person_contact_form_template.docx";
 
         private string destFile;
