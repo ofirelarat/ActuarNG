@@ -37,11 +37,23 @@ namespace ActuarNG
             {
                 Person_1 = new Person()
                 {
-                    FullName = fullName.Text,
-                    Id = id.Text,
-                    EmailAddress = email.Text,
-                    PhoneNumber = phoneNum.Text
-                }
+                    FullName = fullName_1.Text,
+                    Id = id_1.Text,
+                    EmailAddress = email_1.Text,
+                    PhoneNumber = phoneNum_1.Text,
+                    BirthDate = birth_date_1.SelectedDate ?? new DateTime()
+                },
+                Person_2 = new Person()
+                {
+                    FullName = fullName_2.Text,
+                    Id = fullName_2.Text,
+                    EmailAddress = email_2.Text,
+                    PhoneNumber = phoneNum_2.Text,
+                    BirthDate = birth_date_2.SelectedDate ?? new DateTime()
+                },
+                CreationDate = DateTime.Now,
+                PartnershipEndDate = partnership_end.SelectedDate ?? new DateTime(),
+                PartnershipStartDate = partnership_start.SelectedDate ?? new DateTime()
             };
 
             DocxGenerator docxGenerator = new DocxGenerator(contactForm);
