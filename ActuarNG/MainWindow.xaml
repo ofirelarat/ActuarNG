@@ -280,6 +280,33 @@
                                   FlowDirection="RightToLeft"
                                   VerticalAlignment="Center" />
                         </Grid>
+                        <Grid
+                            Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="7*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                        Grid.Column="2"
+                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                        Text= "מהות התיק"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" >
+                            </TextBlock>
+                            <TextBox
+                                      x:Name="work_essence"
+                                      Grid.Column="0"
+                                      TextWrapping="Wrap"
+                                      VerticalAlignment="Stretch"
+                                      MinWidth="280"
+                                      AcceptsReturn="True"
+                                      VerticalScrollBarVisibility="Auto"
+                                      SpellCheck.IsEnabled="True"
+                                      FlowDirection="RightToLeft"
+                                      materialDesign:HintAssist.Hint="Multiline text"
+                                      Text="ביצוע דוח איזון המשאבים שצברו הצדדים בתקופת החיים המשותפים כפי שיועברו על ידי הצדדים." />
+                        </Grid>
                     </Grid>
                     <Grid
                         Grid.Row="2"
