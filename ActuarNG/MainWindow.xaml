@@ -32,7 +32,8 @@
                                 Grid.Column="1"
                                 Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                                 Text= "יצירת טפסי לקוחות אוטומטית"
-                                HorizontalAlignment="Center">
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" >
                     </TextBlock>
                     <Grid
                          Grid.Row="1"
@@ -50,10 +51,7 @@
 
                         <Grid
                             Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="172*"/>
-                                <ColumnDefinition Width="55*"/>
-                            </Grid.ColumnDefinitions>
+             
                             <ComboBox
                                     materialDesign:HintAssist.Hint="שם מטפל"
                                     HorizontalContentAlignment="Right" Grid.ColumnSpan="2">
@@ -71,8 +69,9 @@
                         <Grid
                             Grid.Row="1">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="7*" />
                                 <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="7*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*" />
@@ -83,7 +82,7 @@
                             </Grid.RowDefinitions>
                                 <TextBlock
                                         Grid.Row="0"
-                                        Grid.Column="1"
+                                        Grid.Column="2"
                                         Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
                                         Text= "פרטי תיק"
                                         HorizontalAlignment="Right"
@@ -91,9 +90,9 @@
                                 </TextBlock>
                             <ComboBox
                                     Grid.Row="1"
-                                    Grid.Column="1"
+                                    Grid.Column="2"
                                     materialDesign:HintAssist.Hint="סוג תיק"
-                                    HorizontalContentAlignment="Right" Grid.ColumnSpan="2">
+                                    HorizontalContentAlignment="Right">
                                 <ComboBoxItem
                                                 Content="בית משפט" />
                                 <ComboBoxItem
@@ -110,21 +109,21 @@
                             <DatePicker
                                   Name="case_decision_date"
                                   Grid.Row="2"
-                                  Grid.Column="1"
+                                  Grid.Column="2"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד החלטה"
                                   VerticalAlignment="Center" />
                             <DatePicker
                                   Name="receiving_case_date"
                                   Grid.Row="3"
-                                  Grid.Column="1"
+                                  Grid.Column="2"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד קבלת ההתיק"
                                   VerticalAlignment="Center" />
                             <TextBox
                                   x:Name="publish_days"
                                   Grid.Row="4"
-                                  Grid.Column="1"
+                                  Grid.Column="2"
                                   HorizontalContentAlignment="Right"
                                   materialDesign:HintAssist.Hint="תקופת ההגשה - בימים"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -158,11 +157,11 @@
                          <Grid
                             Grid.Row="2">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="7*" />
                                 <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="7*" />
                                 <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="3*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*" />
@@ -171,102 +170,114 @@
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="1*" />
                             </Grid.RowDefinitions>
-
+                            <TextBlock
+                                        Grid.Row="0"
+                                        Grid.Column="4"
+                                        Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                                        Text= "פרטי בני זוג"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center" >
+                            </TextBlock>
                             <DatePicker
                                   Name="partnership_start"
                                   Grid.Row="0"
-                                  Grid.Column="0"
+                                  Grid.Column="2"
                                   Width="120"
                                   FlowDirection="RightToLeft"
-                                  materialDesign:HintAssist.Hint="מועד נישואין"
+                                  materialDesign:HintAssist.Hint="מועד תחילת תקופת השיתוף"
                                   VerticalAlignment="Center" />
                             <DatePicker
                                   x:Name="partnership_end"
-                                  Grid.Row="1"
+                                  Grid.Row="0"
                                   Grid.Column="0"
                                   Width="120"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד הקרע"
                                   VerticalAlignment="Center" />
+                            <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                        Text= "בעל"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" >
+                            </TextBlock>
+                            <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                        Text= "אישה"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" >
+                            </TextBlock>
+                             
+                            <TextBlock
+                                        Grid.Row="2"
+                                        Grid.Column="4"
+                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                        Text= "שם"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" >
+                            </TextBlock>
                             <TextBox
-                                  x:Name="fullName_1"
-                                  Grid.Row="0"
-                                  Grid.Column="4"
-                                  HorizontalContentAlignment="Right"
-                                  materialDesign:HintAssist.Hint="שם מלא בעל"
-                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                  VerticalAlignment="Center" />
-                            <TextBox
-                                  x:Name="id_1"
-                                  Grid.Row="1"
-                                  Grid.Column="4"
-                                  HorizontalContentAlignment="Right"
-                                  materialDesign:HintAssist.Hint="מס' ת.ז בעל"
-                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                  VerticalAlignment="Center" />
-                            <TextBox
-                                  x:Name="phoneNum_1"
                                   Grid.Row="2"
-                                  Grid.Column="4"
-                                  HorizontalContentAlignment="Right"
-                                  materialDesign:HintAssist.Hint="טלפון ליצירת קשר בעל"
-                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                  Grid.Column="2"
+                                  x:Name="fullName_1"
+                                  materialDesign:TransitionAssist.DisableTransitions="True"
+                                  FlowDirection="RightToLeft"  
+                                VerticalAlignment="Center" />
+                            <TextBox
+                                  Grid.Row="2"
+                                  Grid.Column="0"
+                                  x:Name="fullName_2"
+                                  materialDesign:TransitionAssist.DisableTransitions="True"
+                                  FlowDirection="RightToLeft"    
+                                  VerticalAlignment="Center" />
+
+                            <TextBlock
+                                Grid.Row="3"
+                                Grid.Column="4"
+                                Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                Text= "ת.ז"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" >
+                            </TextBlock>
+                            <TextBox
+                                  Grid.Row="3"
+                                  Grid.Column="2"
+                                  x:Name="id_1"
+                                  materialDesign:TransitionAssist.DisableTransitions="True"
+                                  FlowDirection="RightToLeft"  
                                   VerticalAlignment="Center" />
                             <TextBox
-                                  x:Name="email_1"
                                   Grid.Row="3"
-                                  Grid.Column="4"
-                                  HorizontalContentAlignment="Right"
-                                  materialDesign:HintAssist.Hint="E-MAIL בעל"
-                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                  Grid.Column="0"
+                                  x:Name="id_2"
+                                  materialDesign:TransitionAssist.DisableTransitions="True"
+                                  FlowDirection="RightToLeft"  
                                   VerticalAlignment="Center" />
+
+                            <TextBlock
+                                        Grid.Row="4"
+                                        Grid.Column="4"
+                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                        Text= "תאריך לידה"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" >
+                            </TextBlock>
                             <DatePicker
                                   Name="birth_date_1"
                                   Grid.Row="4"
-                                  Grid.Column="4"
+                                  Grid.Column="2"
                                   Width="120"
                                   FlowDirection="RightToLeft"
-                                  materialDesign:HintAssist.Hint="תאריך לידה בעל"
-                                  VerticalAlignment="Center" />
-                            <TextBox
-                                  x:Name="fullName_2"
-                                  Grid.Row="0"
-                                  Grid.Column="2"
-                                  HorizontalContentAlignment="Right"
-                                  materialDesign:HintAssist.Hint="שם מלא אישה"
-                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                  VerticalAlignment="Center" />
-                            <TextBox
-                                  x:Name="id_2"
-                                  Grid.Row="1"
-                                  Grid.Column="2"
-                                  HorizontalContentAlignment="Right"
-                                  materialDesign:HintAssist.Hint="מס' ת.ז אישה"
-                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                  VerticalAlignment="Center" />
-                            <TextBox
-                                  x:Name="phoneNum_2"
-                                  Grid.Row="2"
-                                  Grid.Column="2"
-                                  HorizontalContentAlignment="Right"
-                                  materialDesign:HintAssist.Hint="טלפון ליצירת קשר אישה"
-                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                  VerticalAlignment="Center" />
-                            <TextBox
-                                  x:Name="email_2"
-                                  Grid.Row="3"
-                                  Grid.Column="2"
-                                  HorizontalContentAlignment="Right"
-                                  materialDesign:HintAssist.Hint="E-MAIL אישה"
-                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   VerticalAlignment="Center" />
                             <DatePicker
                                   Name="birth_date_2"
                                   Grid.Row="4"
-                                  Grid.Column="2"
+                                  Grid.Column="0"
                                   Width="120"
                                   FlowDirection="RightToLeft"
-                                  materialDesign:HintAssist.Hint="תאריך לידה אישה"
                                   VerticalAlignment="Center" />
                         </Grid>
                     </Grid>
