@@ -35,6 +35,16 @@ namespace ActuarNG
         {
             ContactFormPerson contactForm = new ContactFormPerson()
             {
+                CaseInfo = new CaseDetails()
+                {
+                    OpenDate = DateTime.Now,
+                    DecisionDate = case_decision_date.SelectedDate ?? new DateTime(),
+                    CaseReceivementDate = receiving_case_date.SelectedDate ?? new DateTime(),
+                    PublishDays = publish_days.Text,
+                    CourtName = court_name.Text,
+                    CaseNum = int.Parse(case_num.Text),
+                    JudgeName = judge_name.Text
+                },
                 Person_1 = new Person()
                 {
                     FullName = fullName_1.Text,
@@ -47,9 +57,11 @@ namespace ActuarNG
                     Id = fullName_2.Text,
                     BirthDate = birth_date_2.SelectedDate ?? new DateTime()
                 },
-                CreationDate = DateTime.Now,
                 PartnershipEndDate = partnership_end.SelectedDate ?? new DateTime(),
-                PartnershipStartDate = partnership_start.SelectedDate ?? new DateTime()
+                PartnershipStartDate = partnership_start.SelectedDate ?? new DateTime(),
+                WorkEssence = work_essence.Text,
+                CreationDate = DateTime.Now
+                
             };
 
             DocxGenerator docxGenerator = new DocxGenerator(contactForm);

@@ -51,8 +51,9 @@
 
                         <Grid
                             Grid.Row="0">
-             
+
                             <ComboBox
+                                    x:Name="case_owner"
                                     materialDesign:HintAssist.Hint="שם מטפל"
                                     HorizontalContentAlignment="Right" Grid.ColumnSpan="2">
                                 <ComboBoxItem
@@ -69,9 +70,11 @@
                         <Grid
                             Grid.Row="1">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="7*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="7*" />
+                                <ColumnDefinition Width="423*" />
+                                <ColumnDefinition Width="60*" />
+                                <ColumnDefinition Width="82*" />
+                                <ColumnDefinition Width="232*"/>
+                                <ColumnDefinition Width="110*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*" />
@@ -80,19 +83,17 @@
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="1*" />
                             </Grid.RowDefinitions>
-                                <TextBlock
-                                        Grid.Row="0"
-                                        Grid.Column="2"
+                            <TextBlock
+                                        Grid.Column="4"
                                         Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
                                         Text= "פרטי תיק"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center" >
-                                </TextBlock>
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center" Margin="51,0,0,0" />
                             <ComboBox
                                     Grid.Row="1"
-                                    Grid.Column="2"
+                                    Grid.Column="1"
                                     materialDesign:HintAssist.Hint="סוג תיק"
-                                    HorizontalContentAlignment="Right">
+                                    HorizontalContentAlignment="Right" Grid.ColumnSpan="4" Margin="60,0,0,0">
                                 <ComboBoxItem
                                                 Content="בית משפט" />
                                 <ComboBoxItem
@@ -107,27 +108,25 @@
                                                 Content="אחר" />
                             </ComboBox>
                             <DatePicker
-                                  Name="case_decision_date"
+                                  x:Name="case_decision_date"
                                   Grid.Row="2"
-                                  Grid.Column="2"
+                                  Grid.Column="1"
                                   FlowDirection="RightToLeft"
-                                  materialDesign:HintAssist.Hint="מועד החלטה"
-                                  VerticalAlignment="Center" />
+                                  materialDesign:HintAssist.Hint="מועד החלטה" Grid.ColumnSpan="4" Margin="60,0,0,0" />
                             <DatePicker
-                                  Name="receiving_case_date"
+                                  x:Name="receiving_case_date"
                                   Grid.Row="3"
-                                  Grid.Column="2"
+                                  Grid.Column="1"
                                   FlowDirection="RightToLeft"
-                                  materialDesign:HintAssist.Hint="מועד קבלת ההתיק"
-                                  VerticalAlignment="Center" />
+                                  materialDesign:HintAssist.Hint="מועד קבלת ההתיק" Grid.ColumnSpan="4" Margin="60,0,0,0" />
                             <TextBox
                                   x:Name="publish_days"
                                   Grid.Row="4"
-                                  Grid.Column="2"
+                                  Grid.Column="1"
                                   HorizontalContentAlignment="Right"
                                   materialDesign:HintAssist.Hint="תקופת ההגשה - בימים"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                  VerticalAlignment="Center" />
+                                  VerticalAlignment="Center" Grid.ColumnSpan="4" Margin="60,0,0,0" />
                             <TextBox
                                   x:Name="court_name"
                                   Grid.Row="1"
@@ -154,7 +153,7 @@
                                   VerticalAlignment="Center" />
                         </Grid>
 
-                         <Grid
+                        <Grid
                             Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="7*" />
@@ -210,7 +209,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center" >
                             </TextBlock>
-                             
+
                             <TextBlock
                                         Grid.Row="2"
                                         Grid.Column="4"
