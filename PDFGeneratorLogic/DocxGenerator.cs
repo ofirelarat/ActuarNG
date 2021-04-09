@@ -8,31 +8,29 @@ namespace PDFGeneratorLogic
 {
     public class DocxGenerator
     {
-        const string sourceFile = @"./resources/new_person_contact_form_template.docx";
-
-        private string destFile;
-
         private ContactFormPerson contactFormPerson;
         private string targetPath = new ConfigMgr().GetDestenationPath();
         //private readonly string targetPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         public DocxGenerator(ContactFormPerson contactForm)
         {
-            destFile = System.IO.Path.Combine(targetPath, $"טופס_הזמנת_עבודה_{contactForm.Person_1.Id}.docx");
             contactFormPerson = contactForm;
         }
 
-        public void GenerateNewPersonWord()
+        public void GenerateNewPersonContactForm()
         {
+            const string sourceFile = @"./resources/new_person_contact_form_template.docx";
+            string destFile = System.IO.Path.Combine(targetPath, $"טופס_הזמנת_עבודה_{contactFormPerson.Person_1.Id}.docx");
+
             WordprocessingDocument wordprocessingDocument;
       
-            CopyTemplateFile();
+            CopyTemplateFile(sourceFile, destFile);
 
             wordprocessingDocument = WordprocessingDocument.Open(destFile, true);
             Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
 
             var xml = body.OuterXml;
-            string tokenziedXML = TokenizeDocs(xml);
+            string tokenziedXML = TokenizeNewContactFormDoc(xml);
 
             body.InnerXml = tokenziedXML;
 
@@ -40,15 +38,57 @@ namespace PDFGeneratorLogic
             wordprocessingDocument.Dispose();
         }
 
-        private void CopyTemplateFile()
+        public void GenerateNewPersonEconomyDetailsForm()
+        {
+            const string sourceFile = @"./resources/new_person_economy_details_form_template.docx";
+            string destFile = System.IO.Path.Combine(targetPath, $"טופס_הזנת_נתונים_{contactFormPerson.Person_1.Id}.docx");
+
+            WordprocessingDocument wordprocessingDocument;
+
+            CopyTemplateFile(sourceFile, destFile);
+
+            wordprocessingDocument = WordprocessingDocument.Open(destFile, true);
+            Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
+
+            var xml = body.OuterXml;
+            string tokenziedXML = TokenizeNewContactFormDoc(xml);
+
+            body.InnerXml = tokenziedXML;
+
+            wordprocessingDocument.Close();
+            wordprocessingDocument.Dispose();
+        }
+
+        public void GenerateNewPersonEmpowerForm()
+        {
+            const string sourceFile = @"./resources/new_person_empower_form_template.docx";
+            string destFile = System.IO.Path.Combine(targetPath, $"טופס_יפוי_כוח_{contactFormPerson.Person_1.Id}.docx");
+
+            WordprocessingDocument wordprocessingDocument;
+
+            CopyTemplateFile(sourceFile, destFile);
+
+            wordprocessingDocument = WordprocessingDocument.Open(destFile, true);
+            Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
+
+            var xml = body.OuterXml;
+            string tokenziedXML = TokenizeNewContactFormDoc(xml);
+
+            body.InnerXml = tokenziedXML;
+
+            wordprocessingDocument.Close();
+            wordprocessingDocument.Dispose();
+        }
+
+        private void CopyTemplateFile(string sourceFilePath, string destFilePath)
         {           
             // creates the dir if not exists
             System.IO.Directory.CreateDirectory(targetPath);
 
-            System.IO.File.Copy(sourceFile, destFile, true);
+            System.IO.File.Copy(sourceFilePath, destFilePath, true);
         }
 
-        private string TokenizeDocs(string xmlBody)
+        private string TokenizeNewContactFormDoc(string xmlBody)
         {
             string generatedHTML = xmlBody
                                             .Replace($"document_creation_date", contactFormPerson.CreationDate.ToShortDateString())

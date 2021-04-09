@@ -66,7 +66,7 @@ namespace ActuarNG
 
             DocxGenerator docxGenerator = new DocxGenerator(contactForm);
 
-            docxGenerator.GenerateNewPersonWord();
+            docxGenerator.GenerateNewPersonContactForm();
         }
 
         private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)
