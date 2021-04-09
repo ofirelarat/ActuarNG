@@ -32,7 +32,7 @@ namespace PDFGeneratorLogic
             Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
 
             var xml = body.OuterXml;
-            string tokenziedXML = tokenizeDocs(xml);
+            string tokenziedXML = TokenizeDocs(xml);
 
             body.InnerXml = tokenziedXML;
 
@@ -48,20 +48,20 @@ namespace PDFGeneratorLogic
             System.IO.File.Copy(sourceFile, destFile, true);
         }
 
-        private string tokenizeDocs(string xmlBody)
+        private string TokenizeDocs(string xmlBody)
         {
-            string generatedHTML = xmlBody.Replace($"full_name", contactFormPerson.Person_1.FullName)
+            string generatedHTML = xmlBody
+                                            .Replace($"document_creation_date", contactFormPerson.CreationDate.ToShortDateString())
+                                            .Replace($"full_name", contactFormPerson.Person_1.FullName)
                                             .Replace($"id_1", contactFormPerson.Person_1.Id)
                                             .Replace($"id_2", contactFormPerson.Person_2.Id)
-                                            .Replace($"phone_number_1", contactFormPerson.Person_1.PhoneNumber)
-                                            .Replace($"phone_number_2", contactFormPerson.Person_2.PhoneNumber)
-                                            .Replace($"email_address_1", contactFormPerson.Person_1.EmailAddress)
-                                            .Replace($"email_address_2", contactFormPerson.Person_2.EmailAddress)
+                                            .Replace($"name_1", contactFormPerson.Person_1.FullName)
+                                            .Replace($"name_2", contactFormPerson.Person_2.FullName)
                                             .Replace($"birth_date_1", contactFormPerson.Person_1.BirthDate.ToShortDateString())
                                             .Replace($"birth_date_2", contactFormPerson.Person_2.BirthDate.ToShortDateString())
                                             .Replace($"partnership_start", contactFormPerson.PartnershipStartDate.ToShortDateString())
                                             .Replace($"partnership_end", contactFormPerson.PartnershipEndDate.ToShortDateString())
-                                            .Replace($"document_date", contactFormPerson.CreationDate.ToShortDateString());
+                                            .Replace($"work_essence", contactFormPerson.WorkEssence);
 
             return generatedHTML;
         }
