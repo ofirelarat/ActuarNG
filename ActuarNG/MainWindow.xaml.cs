@@ -55,6 +55,14 @@ namespace ActuarNG
             docxGenerator.GenerateNewPersonEmpowerForm();
         }
 
+        private void NewPersonFullFormGenerateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContactFormPerson contactFormDetails = CreateContactDetails();
+            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
+
+            docxGenerator.GenerateNewPersonFullForm();
+        }
+
         private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)
         {
             SettingsConfig settingsConfig = new SettingsConfig()

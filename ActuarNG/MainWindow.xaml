@@ -70,56 +70,57 @@
                         <Grid
                             Grid.Row="1">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="423*" />
-                                <ColumnDefinition Width="60*" />
-                                <ColumnDefinition Width="82*" />
-                                <ColumnDefinition Width="232*"/>
-                                <ColumnDefinition Width="110*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                            </Grid.RowDefinitions>
-                            <TextBlock
+                                    <ColumnDefinition Width="423*" />
+                                    <ColumnDefinition Width="60*" />
+                                    <ColumnDefinition Width="82*" />
+                                    <ColumnDefinition Width="232*"/>
+                                    <ColumnDefinition Width="110*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock
                                         Grid.Column="4"
                                         Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
                                         Text= "פרטי תיק"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center" Margin="51,0,0,0" />
-                            <ComboBox
+                                <ComboBox
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     materialDesign:HintAssist.Hint="סוג תיק"
                                     HorizontalContentAlignment="Right" Grid.ColumnSpan="4" Margin="60,0,0,0">
-                                <ComboBoxItem
+                                    <ComboBoxItem
                                                 Content="בית משפט" />
-                                <ComboBoxItem
+                                    <ComboBoxItem
                                                 Content="בית דין רבני" />
-                                <ComboBoxItem
+                                    <ComboBoxItem
                                                 Content="בהסכמה למטרת גישור" />
-                                <ComboBoxItem
+                                    <ComboBoxItem
                                                 Content="למטרת הבעל בלבד" />
-                                <ComboBoxItem
+                                    <ComboBoxItem
                                                 Content="למטרת האישה בלבד" />
-                                <ComboBoxItem
+                                    <ComboBoxItem
                                                 Content="אחר" />
-                            </ComboBox>
-                            <DatePicker
+                                </ComboBox>
+                                <DatePicker
                                   x:Name="case_decision_date"
                                   Grid.Row="2"
                                   Grid.Column="1"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד החלטה" Grid.ColumnSpan="4" Margin="60,0,0,0" />
-                            <DatePicker
+                                <DatePicker
                                   x:Name="receiving_case_date"
                                   Grid.Row="3"
                                   Grid.Column="1"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד קבלת ההתיק" Grid.ColumnSpan="4" Margin="60,0,0,0" />
-                            <TextBox
+                                <TextBox
                                   x:Name="publish_days"
                                   Grid.Row="4"
                                   Grid.Column="1"
@@ -127,7 +128,7 @@
                                   materialDesign:HintAssist.Hint="תקופת ההגשה - בימים"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   VerticalAlignment="Center" Grid.ColumnSpan="4" Margin="60,0,0,0" />
-                            <TextBox
+                                <TextBox
                                   x:Name="court_name"
                                   Grid.Row="1"
                                   Grid.Column="0"
@@ -135,7 +136,7 @@
                                   materialDesign:HintAssist.Hint="שם הערכאה"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   VerticalAlignment="Center" />
-                            <TextBox
+                                <TextBox
                                   x:Name="case_num"
                                   Grid.Row="2"
                                   Grid.Column="0"
@@ -143,7 +144,7 @@
                                   materialDesign:HintAssist.Hint="מס' תיק"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   VerticalAlignment="Center" />
-                            <TextBox
+                                <TextBox
                                   x:Name="judge_name"
                                   Grid.Row="3"
                                   Grid.Column="0"
@@ -151,9 +152,8 @@
                                   materialDesign:HintAssist.Hint="שם השופט / דיין"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   VerticalAlignment="Center" />
-                        </Grid>
-
-                        <Grid
+                    </Grid>
+                    <Grid
                             Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="7*" />
@@ -316,25 +316,33 @@
                             <ColumnDefinition Width="3*" />
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="3*" />
                         </Grid.ColumnDefinitions>
                         <Button
                                   x:Name="newPersonForm"
-                                  Grid.Column="4"
+                                  Grid.Column="6"
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                   ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                                   Content="טופס בקשת עבודה" Click="NewPersonContactFromGenerateBtn_Click" />
                         <Button
                                   x:Name="newPersonEconomyDetailForm"
-                                  Grid.Column="2"
+                                  Grid.Column="4"
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                   ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                                   Content="טופס הזנת נתונים" Click="NewPersonEconomyFormGenerateBtn_Click" />
                         <Button
                                   x:Name="newPersonEmpowerForm"
-                                  Grid.Column="0"
+                                  Grid.Column="2"
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                   ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                                   Content="טופס ייפוי כוח" Click="NewPersonEmpowerFormGenerateBtn_Click" />
+                        <Button
+                                  x:Name="newPersonFullForm"
+                                  Grid.Column="0"
+                                  Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                                  ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                  Content="טופס מלא" Click="NewPersonFullFormGenerateBtn_Click" />
                     </Grid>
                 </Grid>
             </TabItem>

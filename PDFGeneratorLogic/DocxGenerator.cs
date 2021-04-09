@@ -30,7 +30,7 @@ namespace PDFGeneratorLogic
             Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
 
             var xml = body.OuterXml;
-            string tokenziedXML = TokenizeNewContactFormDoc(xml);
+            string tokenziedXML = TokenizeNewFormDoc(xml);
 
             body.InnerXml = tokenziedXML;
 
@@ -51,7 +51,7 @@ namespace PDFGeneratorLogic
             Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
 
             var xml = body.OuterXml;
-            string tokenziedXML = TokenizeNewContactFormDoc(xml);
+            string tokenziedXML = TokenizeNewFormDoc(xml);
 
             body.InnerXml = tokenziedXML;
 
@@ -72,7 +72,28 @@ namespace PDFGeneratorLogic
             Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
 
             var xml = body.OuterXml;
-            string tokenziedXML = TokenizeNewContactFormDoc(xml);
+            string tokenziedXML = TokenizeNewFormDoc(xml);
+
+            body.InnerXml = tokenziedXML;
+
+            wordprocessingDocument.Close();
+            wordprocessingDocument.Dispose();
+        }
+
+        public void GenerateNewPersonFullForm()
+        {
+            const string sourceFile = @"./resources/new_person_full_form_template.docx";
+            string destFile = System.IO.Path.Combine(targetPath, $"טופס_לקוח_חדש_{contactFormPerson.Person_1.Id}.docx");
+
+            WordprocessingDocument wordprocessingDocument;
+
+            CopyTemplateFile(sourceFile, destFile);
+
+            wordprocessingDocument = WordprocessingDocument.Open(destFile, true);
+            Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
+
+            var xml = body.OuterXml;
+            string tokenziedXML = TokenizeNewFormDoc(xml);
 
             body.InnerXml = tokenziedXML;
 
@@ -88,7 +109,7 @@ namespace PDFGeneratorLogic
             System.IO.File.Copy(sourceFilePath, destFilePath, true);
         }
 
-        private string TokenizeNewContactFormDoc(string xmlBody)
+        private string TokenizeNewFormDoc(string xmlBody)
         {
             string generatedHTML = xmlBody
                                             .Replace($"document_creation_date", contactFormPerson.CreationDate.ToShortDateString())
