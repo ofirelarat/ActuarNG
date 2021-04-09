@@ -31,9 +31,44 @@ namespace ActuarNG
             destenation_folder.Text = configMgr.GetDestenationPath();
         }
 
-        private void NewPersonBtn_Click(object sender, RoutedEventArgs e)
+        private void NewPersonContactFromGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
-            ContactFormPerson contactForm = new ContactFormPerson()
+            ContactFormPerson contactFormDetails = CreateContactDetails();
+            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
+
+            docxGenerator.GenerateNewPersonContactForm();
+        }
+
+        private void NewPersonEconomyFormGenerateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContactFormPerson contactFormDetails = CreateContactDetails();
+            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
+
+            docxGenerator.GenerateNewPersonEconomyDetailsForm();
+        }
+
+        private void NewPersonEmpowerFormGenerateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContactFormPerson contactFormDetails = CreateContactDetails();
+            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
+
+            docxGenerator.GenerateNewPersonEmpowerForm();
+        }
+
+        private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsConfig settingsConfig = new SettingsConfig()
+            {
+                DestenationPath = destenation_folder.Text
+            };
+
+            ConfigMgr configMgr = new ConfigMgr();
+            configMgr.SetSettings(settingsConfig);
+        }
+
+        private ContactFormPerson CreateContactDetails()
+        {
+            ContactFormPerson contactFormDetails = new ContactFormPerson()
             {
                 CaseInfo = new CaseDetails()
                 {
@@ -61,23 +96,10 @@ namespace ActuarNG
                 PartnershipStartDate = partnership_start.SelectedDate ?? new DateTime(),
                 WorkEssence = work_essence.Text,
                 CreationDate = DateTime.Now
-                
+
             };
 
-            DocxGenerator docxGenerator = new DocxGenerator(contactForm);
-
-            docxGenerator.GenerateNewPersonContactForm();
-        }
-
-        private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)
-        {
-            SettingsConfig settingsConfig = new SettingsConfig()
-            {
-                DestenationPath = destenation_folder.Text
-            };
-
-            ConfigMgr configMgr = new ConfigMgr();
-            configMgr.SetSettings(settingsConfig);
+            return contactFormDetails;
         }
     }
 }

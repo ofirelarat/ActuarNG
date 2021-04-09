@@ -322,19 +322,19 @@
                                   Grid.Column="4"
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                   ToolTip="Resource name: MaterialDesignRaisedAccentButton"
-                                  Content="טופס בקשת עבודה" Click="NewPersonBtn_Click" />
+                                  Content="טופס בקשת עבודה" Click="NewPersonContactFromGenerateBtn_Click" />
                         <Button
                                   x:Name="newPersonEconomyDetailForm"
                                   Grid.Column="2"
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                   ToolTip="Resource name: MaterialDesignRaisedAccentButton"
-                                  Content="טופס הזנת נתונים" />
+                                  Content="טופס הזנת נתונים" Click="NewPersonEconomyFormGenerateBtn_Click" />
                         <Button
                                   x:Name="newPersonEmpowerForm"
                                   Grid.Column="0"
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                   ToolTip="Resource name: MaterialDesignRaisedAccentButton"
-                                  Content="טופס ייפוי כוח" />
+                                  Content="טופס ייפוי כוח" Click="NewPersonEmpowerFormGenerateBtn_Click" />
                     </Grid>
                 </Grid>
             </TabItem>
