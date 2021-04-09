@@ -89,7 +89,7 @@ namespace ActuarNG
                 Person_2 = new Person()
                 {
                     FullName = fullName_2.Text,
-                    Id = fullName_2.Text,
+                    Id = id_2.Text,
                     BirthDate = birth_date_2.SelectedDate ?? new DateTime()
                 },
                 PartnershipEndDate = partnership_end.SelectedDate ?? new DateTime(),
