@@ -398,6 +398,14 @@
                               materialDesign:HintAssist.Hint="תיקיית יעד"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                               VerticalAlignment="Center" />
+                    <TextBox
+                              x:Name="clients_archive_file_path"
+                              Grid.Column="1"
+                              Grid.Row="1"
+                              HorizontalContentAlignment="Right"
+                              materialDesign:HintAssist.Hint="קובץ לקוחות"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                              VerticalAlignment="Center" />
                     <Button
                               x:Name="saveSettingsConfig"
                               Grid.Column="1"

@@ -12,21 +12,38 @@ namespace SettingMgr
     {
         private const string SETTINGS_PATH = "./settings.json";
 
+        private SettingsConfig configs;
+
+        public ConfigMgr()
+        {
+            configs = GetConfigsData();
+        }
+
         public string GetDestenationPath()
         {
-            using (StreamReader r = new StreamReader(SETTINGS_PATH))
-            {
-                string json = r.ReadToEnd();
-                SettingsConfig settingsConfig = JsonConvert.DeserializeObject<SettingsConfig>(json);
-                
-                return settingsConfig.DestenationPath;
-            }
+            return configs.DestenationPath;
+        }
+
+        public string GetClientArchivePathPath()
+        {
+            return configs;
         }
 
         public void SetSettings(SettingsConfig settingsConfig)
         {
             string json = JsonConvert.SerializeObject(settingsConfig);
             File.WriteAllText(SETTINGS_PATH, json);
+        }
+
+        public SettingsConfig GetConfigsData()
+        {
+            using (StreamReader r = new StreamReader(SETTINGS_PATH))
+            {
+                string json = r.ReadToEnd();
+                SettingsConfig settingsConfig = JsonConvert.DeserializeObject<SettingsConfig>(json);
+
+                return settingsConfig;
+            }
         }
     }
 }
