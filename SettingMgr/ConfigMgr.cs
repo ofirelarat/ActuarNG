@@ -26,7 +26,7 @@ namespace SettingMgr
 
         public string GetClientArchivePathPath()
         {
-            return configs;
+            return configs.ClientsArchiveFilePath;
         }
 
         public void SetSettings(SettingsConfig settingsConfig)
