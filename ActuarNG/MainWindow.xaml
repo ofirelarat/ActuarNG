@@ -193,6 +193,11 @@
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד הקרע"
                                   VerticalAlignment="Center" />
+                            <Border  
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                BorderBrush="Black" BorderThickness="2" VerticalAlignment="Bottom">
+                            </Border>
                             <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="2"
@@ -201,6 +206,11 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center" >
                             </TextBlock>
+                            <Border  
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BorderBrush="Black" BorderThickness="2" VerticalAlignment="Bottom">
+                            </Border>
                             <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="0"
