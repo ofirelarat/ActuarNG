@@ -12,19 +12,29 @@ namespace ClientsDAO
     public class ClientFileDAO : IClientDAO
     {
         private string CLIENTS_ARCHIVE_FILE_PATH;
+
+        private List<ContactFormPerson> cachedClients;
         public ClientFileDAO(ConfigMgr configMgr)
         {
             CLIENTS_ARCHIVE_FILE_PATH = configMgr.GetClientArchivePathPath();
+
+            using (FileStream stream = new FileStream(CLIENTS_ARCHIVE_FILE_PATH, FileMode.OpenOrCreate));
+
+            cachedClients = ReadClients() ?? new List<ContactFormPerson>();
         }
 
         public void AddNewClient(ContactFormPerson formPerson)
         {
-            throw new NotImplementedException();
+            List<ContactFormPerson> clients = cachedClients;
+            clients.Add(formPerson);
+
+            string json = JsonConvert.SerializeObject(clients);
+            File.WriteAllText(CLIENTS_ARCHIVE_FILE_PATH, json);
         }
 
         public ContactFormPerson GetClient(string personId)
         {
-            List<ContactFormPerson> clients = ReadClients();
+            List<ContactFormPerson> clients = cachedClients;
             ContactFormPerson matchedClient = clients.Find((contactForm) => 
                             contactForm.Person_1.Id == personId || contactForm.Person_2.Id == personId);
             

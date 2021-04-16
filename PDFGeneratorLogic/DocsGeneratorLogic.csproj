@@ -9,6 +9,7 @@
     <None Remove="resources\new_person_contact_form_template.docx" />
     <None Remove="resources\new_person_economy_details_form_template.docx" />
     <None Remove="resources\new_person_empower_form_template.docx" />
+    <None Remove="resources\new_person_full_form_template.docx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +23,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\new_person_empower_form_template.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\new_person_full_form_template.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

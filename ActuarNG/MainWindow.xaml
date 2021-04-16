@@ -382,6 +382,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*" />
                         <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
                         <RowDefinition Height="2*" />
                     </Grid.RowDefinitions>
                     <TextBlock
@@ -402,7 +403,7 @@
                     <TextBox
                               x:Name="clients_archive_file_path"
                               Grid.Column="1"
-                              Grid.Row="1"
+                              Grid.Row="2"
                               HorizontalContentAlignment="Right"
                               materialDesign:HintAssist.Hint="קובץ לקוחות"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -410,7 +411,7 @@
                     <Button
                               x:Name="saveSettingsConfig"
                               Grid.Column="1"
-                              Grid.Row="2"
+                              Grid.Row="3"
                               Style="{StaticResource MaterialDesignRaisedAccentButton}"
                               Width="250"
                               ToolTip="Resource name: MaterialDesignRaisedAccentButton"

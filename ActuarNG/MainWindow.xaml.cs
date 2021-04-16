@@ -1,21 +1,9 @@
-﻿using Common.Models;
+﻿using ClientsDAO;
+using Common.Models;
 using PDFGeneratorLogic;
 using SettingMgr;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 namespace ActuarNG
 {
     /// <summary>
@@ -62,6 +50,9 @@ namespace ActuarNG
             DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
 
             docxGenerator.GenerateNewPersonFullForm();
+
+            IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
+            clientDAO.AddNewClient(contactFormDetails);
         }
 
         private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)

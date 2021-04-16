@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ClientsDAO\ClientsDAO.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\PDFGeneratorLogic\DocsGeneratorLogic.csproj" />
     <ProjectReference Include="..\SettingMgr\SettingMgr.csproj" />
