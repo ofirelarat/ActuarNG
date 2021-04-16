@@ -32,8 +32,7 @@
                                 Grid.Column="1"
                                 Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                                 Text= "יצירת טפסי לקוחות אוטומטית"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center" >
+                                HorizontalAlignment="Center" >
                     </TextBlock>
                     <Grid
                          Grid.Row="1"
@@ -312,7 +311,6 @@
                                       MinWidth="280"
                                       AcceptsReturn="True"
                                       VerticalScrollBarVisibility="Auto"
-                                      SpellCheck.IsEnabled="True"
                                       FlowDirection="RightToLeft"
                                       materialDesign:HintAssist.Hint="Multiline text"
                                       Text="ביצוע דוח איזון המשאבים שצברו הצדדים בתקופת החיים המשותפים כפי שיועברו על ידי הצדדים." />
@@ -379,8 +377,7 @@
                             Grid.Column="1"
                                 Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                                 Text= "צ'ק ליסט"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center">
+                                HorizontalAlignment="Center">
                     </TextBlock>
                     <Grid
                         Grid.Row="1"
