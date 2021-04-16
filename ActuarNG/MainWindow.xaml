@@ -357,6 +357,18 @@
                     </Grid>
                 </Grid>
             </TabItem>
+            <!-- Client Check List -->
+            <TabItem
+                    Header="{materialDesign:PackIcon Kind=FormatListChecks, Size=24}"
+                    Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                <Grid>
+                    <TextBlock
+                                Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                Text= "צ'ק ליסט"
+                                HorizontalAlignment="Center">
+                    </TextBlock>
+                </Grid>
+            </TabItem>
             <!-- Clients status -->
             <TabItem
                     Header="{materialDesign:PackIcon Kind=AccountGroupOutline, Size=24}"
