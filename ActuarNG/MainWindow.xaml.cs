@@ -104,5 +104,21 @@ namespace ActuarNG
 
             return contactFormDetails;
         }
+
+        private void check_list_search_btn_Click(object sender, RoutedEventArgs e)
+        {
+            IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
+            ContactFormPerson client = clientDAO.GetClient(check_list_search.Text);
+            if(client != null)
+            {
+                check_list_owner_name.Text = $"התיק בטיפולו של:{client.CaseOwner}";
+                check_list_partner_1.Text = $"ת.ז: {client.Person_1.Id}, שם: {client.Person_1.FullName}";
+                check_list_partner_2.Text = $"ת.ז: {client.Person_2.Id}, שם: {client.Person_2.FullName}";
+            }
+            else
+            {
+                check_list_not_found_placement.Text = "הלקוח לא נמצא";
+            }
+        }
     }
 }

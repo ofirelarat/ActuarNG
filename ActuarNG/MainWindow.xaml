@@ -70,58 +70,58 @@
                         <Grid
                             Grid.Row="1">
                             <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="423*" />
-                                    <ColumnDefinition Width="60*" />
-                                    <ColumnDefinition Width="82*" />
-                                    <ColumnDefinition Width="232*"/>
-                                    <ColumnDefinition Width="110*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*" />
-                                    <RowDefinition Height="1*" />
-                                    <RowDefinition Height="1*" />
-                                    <RowDefinition Height="1*" />
-                                    <RowDefinition Height="1*" />
-                                </Grid.RowDefinitions>
+                                <ColumnDefinition Width="423*" />
+                                <ColumnDefinition Width="60*" />
+                                <ColumnDefinition Width="82*" />
+                                <ColumnDefinition Width="232*"/>
+                                <ColumnDefinition Width="110*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
 
-                                <TextBlock
+                            <TextBlock
                                         Grid.Column="4"
                                         Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
                                         Text= "פרטי תיק"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center" Margin="51,0,0,0" />
-                                <ComboBox
+                            <ComboBox
                                     x:Name="case_type"
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     materialDesign:HintAssist.Hint="סוג תיק"
                                     HorizontalContentAlignment="Right" Grid.ColumnSpan="4" Margin="60,0,0,0">
-                                    <ComboBoxItem
+                                <ComboBoxItem
                                                 Content="בית משפט" />
-                                    <ComboBoxItem
+                                <ComboBoxItem
                                                 Content="בית דין רבני" />
-                                    <ComboBoxItem
+                                <ComboBoxItem
                                                 Content="בהסכמה למטרת גישור" />
-                                    <ComboBoxItem
+                                <ComboBoxItem
                                                 Content="למטרת הבעל בלבד" />
-                                    <ComboBoxItem
+                                <ComboBoxItem
                                                 Content="למטרת האישה בלבד" />
-                                    <ComboBoxItem
+                                <ComboBoxItem
                                                 Content="אחר" />
-                                </ComboBox>
-                                <DatePicker
+                            </ComboBox>
+                            <DatePicker
                                   x:Name="case_decision_date"
                                   Grid.Row="2"
                                   Grid.Column="1"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד החלטה" Grid.ColumnSpan="4" Margin="60,0,0,0" />
-                                <DatePicker
+                            <DatePicker
                                   x:Name="receiving_case_date"
                                   Grid.Row="3"
                                   Grid.Column="1"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד קבלת ההתיק" Grid.ColumnSpan="4" Margin="60,0,0,0" />
-                                <TextBox
+                            <TextBox
                                   x:Name="publish_days"
                                   Grid.Row="4"
                                   Grid.Column="1"
@@ -129,7 +129,7 @@
                                   materialDesign:HintAssist.Hint="תקופת ההגשה - בימים"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   VerticalAlignment="Center" Grid.ColumnSpan="4" Margin="60,0,0,0" />
-                                <TextBox
+                            <TextBox
                                   x:Name="court_name"
                                   Grid.Row="1"
                                   Grid.Column="0"
@@ -137,7 +137,7 @@
                                   materialDesign:HintAssist.Hint="שם הערכאה"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   VerticalAlignment="Center" />
-                                <TextBox
+                            <TextBox
                                   x:Name="case_num"
                                   Grid.Row="2"
                                   Grid.Column="0"
@@ -145,7 +145,7 @@
                                   materialDesign:HintAssist.Hint="מס' תיק"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   VerticalAlignment="Center" />
-                                <TextBox
+                            <TextBox
                                   x:Name="judge_name"
                                   Grid.Row="3"
                                   Grid.Column="0"
@@ -153,8 +153,8 @@
                                   materialDesign:HintAssist.Hint="שם השופט / דיין"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   VerticalAlignment="Center" />
-                    </Grid>
-                    <Grid
+                        </Grid>
+                        <Grid
                             Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="7*" />
@@ -192,7 +192,7 @@
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד הקרע"
                                   VerticalAlignment="Center" />
-                        
+
                             <Border  
                                 Grid.Row="1"
                                 Grid.Column="2"
@@ -206,7 +206,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center" >
                             </TextBlock>
-                        
+
                             <Border  
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -370,7 +370,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*" />
                         <RowDefinition Height="1*" />
-                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="8*" />
                         <RowDefinition Height="2*" />
                     </Grid.RowDefinitions>
                     <TextBlock
@@ -378,7 +379,8 @@
                             Grid.Column="1"
                                 Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                                 Text= "צ'ק ליסט"
-                                HorizontalAlignment="Center">
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
                     </TextBlock>
                     <Grid
                         Grid.Row="1"
@@ -397,11 +399,51 @@
                         <Button
                                 x:Name="check_list_search_btn"
                                 Grid.Column="0"
-                                  Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                                  ToolTip="MaterialDesignFloatingActionMiniAccentButton">
-                                <materialDesign:PackIcon
+                                  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                  ToolTip="MaterialDesignFloatingActionMiniAccentButton" Click="check_list_search_btn_Click">
+                            <materialDesign:PackIcon
                                     Kind="AccountSearch" />
                         </Button>
+                    </Grid>
+                    <Grid
+                        Grid.Row="2"
+                        Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            x:Name="check_list_owner_name"
+                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                            HorizontalAlignment="Right"
+                            Text="" />
+                        <TextBlock
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            x:Name="check_list_partner_1"
+                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                            HorizontalAlignment="Right"
+                            Text="" />
+                        <TextBlock
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            x:Name="check_list_partner_2"
+                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                            HorizontalAlignment="Right"
+                            Text="" />
+                        <TextBlock
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            x:Name="check_list_not_found_placement"
+                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                            HorizontalAlignment="Right"
+                            Text="" />
                     </Grid>
                 </Grid>
             </TabItem>
