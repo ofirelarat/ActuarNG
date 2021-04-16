@@ -29,6 +29,7 @@ namespace ActuarNG
             
             ConfigMgr configMgr = new ConfigMgr();
             destenation_folder.Text = configMgr.GetDestenationPath();
+            clients_archive_file_path.Text = configMgr.GetClientArchivePathPath();
         }
 
         private void NewPersonContactFromGenerateBtn_Click(object sender, RoutedEventArgs e)
@@ -67,7 +68,8 @@ namespace ActuarNG
         {
             SettingsConfig settingsConfig = new SettingsConfig()
             {
-                DestenationPath = destenation_folder.Text
+                DestenationPath = destenation_folder.Text,
+                ClientsArchiveFilePath = clients_archive_file_path.Text
             };
 
             ConfigMgr configMgr = new ConfigMgr();
