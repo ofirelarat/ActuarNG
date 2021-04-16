@@ -182,7 +182,6 @@
                                   Name="partnership_start"
                                   Grid.Row="0"
                                   Grid.Column="2"
-                                  Width="120"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד תחילת תקופת השיתוף"
                                   VerticalAlignment="Center" />
@@ -190,14 +189,14 @@
                                   x:Name="partnership_end"
                                   Grid.Row="0"
                                   Grid.Column="0"
-                                  Width="120"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד הקרע"
                                   VerticalAlignment="Center" />
+                        
                             <Border  
                                 Grid.Row="1"
                                 Grid.Column="2"
-                                BorderBrush="Black" BorderThickness="2" VerticalAlignment="Bottom">
+                                BorderBrush="Black" BorderThickness="1" VerticalAlignment="Bottom">
                             </Border>
                             <TextBlock
                                         Grid.Row="1"
@@ -207,10 +206,11 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center" >
                             </TextBlock>
+                        
                             <Border  
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                BorderBrush="Black" BorderThickness="2" VerticalAlignment="Bottom">
+                                BorderBrush="Black" BorderThickness="1" VerticalAlignment="Bottom">
                             </Border>
                             <TextBlock
                                         Grid.Row="1"
