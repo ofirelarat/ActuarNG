@@ -362,11 +362,47 @@
                     Header="{materialDesign:PackIcon Kind=FormatListChecks, Size=24}"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>
                     <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
                                 Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                                 Text= "צ'ק ליסט"
                                 HorizontalAlignment="Center">
                     </TextBlock>
+                    <Grid
+                        Grid.Row="1"
+                        Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="6*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                                  x:Name="check_list_search"
+                                  Grid.Column="1"
+                                  HorizontalContentAlignment="Right"
+                                  materialDesign:HintAssist.Hint="(חיפוש לקוח (לפי תעודת זהות"
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                  VerticalAlignment="Center" />
+                        <Button
+                                x:Name="check_list_search_btn"
+                                Grid.Column="0"
+                                  Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                  ToolTip="MaterialDesignFloatingActionMiniAccentButton">
+                                <materialDesign:PackIcon
+                                    Kind="AccountSearch" />
+                        </Button>
+                    </Grid>
                 </Grid>
             </TabItem>
             <!-- Clients status -->
