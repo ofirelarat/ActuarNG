@@ -6,7 +6,12 @@ namespace Common.Models
 {
     public enum CaseType
     {
-
+        Court,
+        RabbinicalCourt,
+        MediationPurpose,
+        ForHusbandPurposeOnly,
+        ForWifePurposeOnly,
+        Other
     }
 
     public class CaseDetails

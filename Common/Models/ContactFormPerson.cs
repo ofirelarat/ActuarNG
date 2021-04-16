@@ -6,7 +6,10 @@ namespace Common.Models
 {
     public enum Owner
     {
-
+        Daniel,
+        Yosi,
+        Avi,
+        Sharon
     }
 
     public class ContactFormPerson

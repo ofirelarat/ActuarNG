@@ -78,8 +78,10 @@ namespace ActuarNG
         {
             ContactFormPerson contactFormDetails = new ContactFormPerson()
             {
+                CaseOwner = (Owner)case_owner.SelectedIndex,
                 CaseInfo = new CaseDetails()
                 {
+                    CaseTypeValue = (CaseType)case_type.SelectedIndex,
                     OpenDate = DateTime.Now,
                     DecisionDate = case_decision_date.SelectedDate ?? new DateTime(),
                     CaseReceivementDate = receiving_case_date.SelectedDate ?? new DateTime(),
