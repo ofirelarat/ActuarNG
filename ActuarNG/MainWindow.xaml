@@ -15,6 +15,7 @@
             <!-- New Forms -->
             <TabItem
                     Header="{materialDesign:PackIcon Kind=AccountPlus, Size=24}"
+                    ToolTip="יצירת לקוח חדש"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -332,25 +333,21 @@
                                   x:Name="newPersonForm"
                                   Grid.Column="6"
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                                  ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                                   Content="טופס בקשת עבודה" Click="NewPersonContactFromGenerateBtn_Click" />
                         <Button
                                   x:Name="newPersonEconomyDetailForm"
                                   Grid.Column="4"
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                                  ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                                   Content="טופס הזנת נתונים" Click="NewPersonEconomyFormGenerateBtn_Click" />
                         <Button
                                   x:Name="newPersonEmpowerForm"
                                   Grid.Column="2"
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                                  ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                                   Content="טופס ייפוי כוח" Click="NewPersonEmpowerFormGenerateBtn_Click" />
                         <Button
                                   x:Name="newPersonFullForm"
                                   Grid.Column="0"
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                                  ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                                   Content="טופס מלא" Click="NewPersonFullFormGenerateBtn_Click" />
                     </Grid>
                 </Grid>
@@ -358,6 +355,7 @@
             <!-- Client Check List -->
             <TabItem
                     Header="{materialDesign:PackIcon Kind=FormatListChecks, Size=24}"
+                    ToolTip="צ'ק ליסט"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -447,6 +445,7 @@
             <!-- Clients status -->
             <TabItem
                     Header="{materialDesign:PackIcon Kind=AccountGroupOutline, Size=24}"
+                    ToolTip="סטטוס לקוחות"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                 <Grid>
                     <TextBlock
@@ -459,6 +458,7 @@
             <!-- Settings -->
             <TabItem
                     Header="{materialDesign:PackIcon Kind=Cog, Size=24}"
+                    ToolTip="הגדרות מערכת"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -501,7 +501,6 @@
                               Grid.Row="3"
                               Style="{StaticResource MaterialDesignRaisedAccentButton}"
                               Width="250"
-                              ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                               Content="שמירה" Click="SaveSettingsConfig_Click" />
                 </Grid>
             </TabItem>
