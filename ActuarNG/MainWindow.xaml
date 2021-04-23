@@ -416,6 +416,7 @@
                             Value="50"
                             IsIndeterminate="True" />
                     </materialDesign:Card>
+                    
                     <Grid
                         Grid.Row="1"
                         Grid.Column="1">
@@ -494,13 +495,13 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                   Binding="{Binding Type}"
-                                  Header="סוג"
+                                  Header="סוג הטופס"
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
                                   IsReadOnly="True"/>
                                 <DataGridTextColumn
                                   Binding="{Binding Name}"
-                                  Header="שם"
+                                  Header="שם המסמך"
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                                   EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
                                   IsReadOnly="True"/>
