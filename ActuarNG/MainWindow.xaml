@@ -35,6 +35,21 @@
                                 Text= "יצירת טפסי לקוחות אוטומטית"
                                 HorizontalAlignment="Center" >
                     </TextBlock>
+                    <materialDesign:Card
+                            x:Name="new_client_progress_indicator"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            UniformCornerRadius="14"
+                            Padding="4"
+                            Visibility="Hidden"
+                            Height="35"
+                            Width="35">
+                        <ProgressBar
+                            Style="{StaticResource MaterialDesignCircularProgressBar}"
+                            Value="50"
+                            IsIndeterminate="True" />
+                    </materialDesign:Card>
+                    
                     <Grid
                          Grid.Row="1"
                          Grid.Column="1">
@@ -74,7 +89,7 @@
                                 Grid.Column="0"
                                 x:Name="IsSavingClientData"
                                 IsChecked="True"
-                                Content="לשמור פרטי לקוח" />            
+                                Content="לשמור פרטי לקוח" />
                         </Grid>
 
                         <Grid
@@ -387,6 +402,20 @@
                                 Text= "צ'ק ליסט"
                                 HorizontalAlignment="Center">
                     </TextBlock>
+                    <materialDesign:Card
+                            x:Name="check_list_progress_indicator"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            UniformCornerRadius="14"
+                            Padding="4"
+                            Visibility="Hidden"
+                            Height="35"
+                            Width="35">
+                        <ProgressBar
+                            Style="{StaticResource MaterialDesignCircularProgressBar}"
+                            Value="50"
+                            IsIndeterminate="True" />
+                    </materialDesign:Card>
                     <Grid
                         Grid.Row="1"
                         Grid.Column="1">
@@ -520,22 +549,23 @@
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="48*" />
+                        <RowDefinition Height="213*"/>
+                        <RowDefinition Height="131*" />
+                        <RowDefinition Height="131*" />
+                        <RowDefinition Height="261*" />
                     </Grid.RowDefinitions>
                     <TextBlock
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                                 Text= "הגדרות המערכת"
-                                HorizontalAlignment="Center">
+                                HorizontalAlignment="Center" Grid.RowSpan="2">
                     </TextBlock>
                     <TextBox
                               x:Name="destenation_folder"
                               Grid.Column="1"
-                              Grid.Row="1"
+                              Grid.Row="2"
                               HorizontalContentAlignment="Right"
                               materialDesign:HintAssist.Hint="תיקיית יעד"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -543,7 +573,7 @@
                     <TextBox
                               x:Name="clients_archive_file_path"
                               Grid.Column="1"
-                              Grid.Row="2"
+                              Grid.Row="3"
                               HorizontalContentAlignment="Right"
                               materialDesign:HintAssist.Hint="קובץ לקוחות"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -551,10 +581,10 @@
                     <Button
                               x:Name="saveSettingsConfig"
                               Grid.Column="1"
-                              Grid.Row="3"
+                              Grid.Row="4"
                               Style="{StaticResource MaterialDesignRaisedAccentButton}"
                               Width="250"
-                              Content="שמירה" Click="SaveSettingsConfig_Click" />
+                              Content="שמירה" Click="SaveSettingsConfig_Click" Margin="242,114,242,115" />
                 </Grid>
             </TabItem>
         </TabControl>

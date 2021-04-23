@@ -27,6 +27,8 @@ namespace ActuarNG
 
         private void NewPersonContactFromGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
+            new_client_progress_indicator.Visibility = Visibility.Visible;
+            
             ContactFormPerson contactFormDetails = CreateContactDetails();
             DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
 
@@ -35,10 +37,14 @@ namespace ActuarNG
             {
                 AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
             }
+
+            new_client_progress_indicator.Visibility = Visibility.Hidden;
         }
 
         private void NewPersonEconomyFormGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
+            new_client_progress_indicator.Visibility = Visibility.Visible;
+
             ContactFormPerson contactFormDetails = CreateContactDetails();
             DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
 
@@ -48,10 +54,14 @@ namespace ActuarNG
             {
                 AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
             }
+
+            new_client_progress_indicator.Visibility = Visibility.Hidden;
         }
 
         private void NewPersonEmpowerFormGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
+            new_client_progress_indicator.Visibility = Visibility.Visible;
+
             ContactFormPerson contactFormDetails = CreateContactDetails();
             DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
 
@@ -61,10 +71,14 @@ namespace ActuarNG
             {
                 AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
             }
+
+            new_client_progress_indicator.Visibility = Visibility.Hidden;
         }
 
         private void NewPersonFullFormGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
+            new_client_progress_indicator.Visibility = Visibility.Visible;
+
             ContactFormPerson contactFormDetails = CreateContactDetails();
             DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
 
@@ -74,23 +88,15 @@ namespace ActuarNG
             {
                 AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
             }
-        }
 
-        private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)
-        {
-            SettingsConfig settingsConfig = new SettingsConfig()
-            {
-                DestenationPath = destenation_folder.Text,
-                ClientsArchiveFilePath = clients_archive_file_path.Text
-            };
-
-            ConfigMgr configMgr = new ConfigMgr();
-            configMgr.SetSettings(settingsConfig);
+            new_client_progress_indicator.Visibility = Visibility.Hidden;
         }
 
         private Client checkListSearchedClient = null;
         private void check_list_search_btn_Click(object sender, RoutedEventArgs e)
         {
+            check_list_progress_indicator.Visibility = Visibility.Visible;
+
             IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
             Client client = clientDAO.GetClient(check_list_search.Text);
             if(client != null)
@@ -106,9 +112,13 @@ namespace ActuarNG
             {
                 check_list_not_found_placement.Text = "הלקוח לא נמצא";
             }
+
+            check_list_progress_indicator.Visibility = Visibility.Hidden;
         }
         private void check_list_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
+            check_list_progress_indicator.Visibility = Visibility.Visible;
+
             IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
 
             if (e.EditAction == DataGridEditAction.Commit && checkListSearchedClient != null)
@@ -119,6 +129,20 @@ namespace ActuarNG
 
                 clientDAO.UpdateClient(checkListSearchedClient);
             }
+
+            check_list_progress_indicator.Visibility = Visibility.Hidden;
+        }
+
+        private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsConfig settingsConfig = new SettingsConfig()
+            {
+                DestenationPath = destenation_folder.Text,
+                ClientsArchiveFilePath = clients_archive_file_path.Text
+            };
+
+            ConfigMgr configMgr = new ConfigMgr();
+            configMgr.SetSettings(settingsConfig);
         }
 
         private ContactFormPerson CreateContactDetails()
