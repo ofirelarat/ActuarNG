@@ -26,10 +26,17 @@ namespace ClientsDAO
         public void AddNewClient(Client formPerson)
         {
             List<Client> clients = cachedClients;
-            clients.Add(formPerson);
+            if (GetClient(formPerson.ContactForm.Person_1.Id) == null && GetClient(formPerson.ContactForm.Person_2.Id) == null)
+            {
+                clients.Add(formPerson);
 
-            string json = JsonConvert.SerializeObject(clients);
-            File.WriteAllText(CLIENTS_ARCHIVE_FILE_PATH, json);
+                string json = JsonConvert.SerializeObject(clients);
+                File.WriteAllText(CLIENTS_ARCHIVE_FILE_PATH, json);
+            }
+            else
+            {
+                UpdateClient(formPerson);
+            }
         }
 
         public Client GetClient(string personId)

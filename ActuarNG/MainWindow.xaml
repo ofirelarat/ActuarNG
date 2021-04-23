@@ -51,8 +51,12 @@
 
                         <Grid
                             Grid.Row="0">
-
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="4*" />
+                            </Grid.ColumnDefinitions>
                             <ComboBox
+                                    Grid.Column="1"
                                     x:Name="case_owner"
                                     materialDesign:HintAssist.Hint="שם מטפל"
                                     HorizontalContentAlignment="Right" Grid.ColumnSpan="2">
@@ -65,6 +69,12 @@
                                 <ComboBoxItem
                                         Content="שרון" />
                             </ComboBox>
+
+                            <CheckBox
+                                Grid.Column="0"
+                                x:Name="IsSavingClientData"
+                                IsChecked="True"
+                                Content="לשמור פרטי לקוח" />            
                         </Grid>
 
                         <Grid

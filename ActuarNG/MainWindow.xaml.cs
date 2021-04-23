@@ -31,6 +31,10 @@ namespace ActuarNG
             DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
 
             docxGenerator.GenerateNewPersonContactForm();
+            if (IsSavingClientData.IsChecked.Value)
+            {
+                AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
+            }
         }
 
         private void NewPersonEconomyFormGenerateBtn_Click(object sender, RoutedEventArgs e)
@@ -39,6 +43,11 @@ namespace ActuarNG
             DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
 
             docxGenerator.GenerateNewPersonEconomyDetailsForm();
+
+            if (IsSavingClientData.IsChecked.Value)
+            {
+                AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
+            }
         }
 
         private void NewPersonEmpowerFormGenerateBtn_Click(object sender, RoutedEventArgs e)
@@ -47,6 +56,11 @@ namespace ActuarNG
             DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
 
             docxGenerator.GenerateNewPersonEmpowerForm();
+
+            if (IsSavingClientData.IsChecked.Value)
+            {
+                AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
+            }
         }
 
         private void NewPersonFullFormGenerateBtn_Click(object sender, RoutedEventArgs e)
@@ -56,7 +70,10 @@ namespace ActuarNG
 
             docxGenerator.GenerateNewPersonFullForm();
 
-            AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
+            if (IsSavingClientData.IsChecked.Value)
+            {
+                AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
+            }
         }
 
         private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)
@@ -72,7 +89,6 @@ namespace ActuarNG
         }
 
         private Client checkListSearchedClient = null;
-
         private void check_list_search_btn_Click(object sender, RoutedEventArgs e)
         {
             IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
@@ -91,7 +107,6 @@ namespace ActuarNG
                 check_list_not_found_placement.Text = "הלקוח לא נמצא";
             }
         }
-
         private void check_list_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
             IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
