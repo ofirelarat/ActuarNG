@@ -395,7 +395,7 @@
                                 x:Name="check_list_search_btn"
                                 Grid.Column="0"
                                   Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
-                                  ToolTip="MaterialDesignFloatingActionMiniAccentButton" Click="check_list_search_btn_Click">
+                                  ToolTip="חפש" Click="check_list_search_btn_Click">
                             <materialDesign:PackIcon
                                     Kind="AccountSearch" />
                         </Button>
