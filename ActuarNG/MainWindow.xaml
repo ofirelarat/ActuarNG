@@ -440,6 +440,46 @@
                             HorizontalAlignment="Right"
                             Text="" />
                     </Grid>
+                    <Grid  
+                        Grid.Row="3"
+                        Grid.Column="1">
+
+                        <DataGrid
+                          x:Name="check_list_DataGrid"
+                          CanUserAddRows="False"
+                          SelectionUnit="Cell"
+                          FlowDirection="RightToLeft"
+                          AutoGenerateColumns="False"
+                          SelectionMode="Extended" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                  Binding="{Binding Type}"
+                                  Header="סוג"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn
+                                  Binding="{Binding Name}"
+                                  Header="שם"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn
+                                  Binding="{Binding Person_1_value}"
+                                  Header="בעל"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn
+                                  Binding="{Binding Person_2_value}"
+                                  Header="אישה"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn
+                                  Binding="{Binding Comments}"
+                                  Header="הערות"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </Grid>
             </TabItem>
             <!-- Clients status -->

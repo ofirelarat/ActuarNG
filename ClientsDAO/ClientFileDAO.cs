@@ -13,45 +13,45 @@ namespace ClientsDAO
     {
         private string CLIENTS_ARCHIVE_FILE_PATH;
 
-        private List<ContactFormPerson> cachedClients;
+        private List<Client> cachedClients;
         public ClientFileDAO(ConfigMgr configMgr)
         {
             CLIENTS_ARCHIVE_FILE_PATH = configMgr.GetClientArchivePathPath();
 
             using (FileStream stream = new FileStream(CLIENTS_ARCHIVE_FILE_PATH, FileMode.OpenOrCreate));
 
-            cachedClients = ReadClients() ?? new List<ContactFormPerson>();
+            cachedClients = ReadClients() ?? new List<Client>();
         }
 
-        public void AddNewClient(ContactFormPerson formPerson)
+        public void AddNewClient(Client formPerson)
         {
-            List<ContactFormPerson> clients = cachedClients;
+            List<Client> clients = cachedClients;
             clients.Add(formPerson);
 
             string json = JsonConvert.SerializeObject(clients);
             File.WriteAllText(CLIENTS_ARCHIVE_FILE_PATH, json);
         }
 
-        public ContactFormPerson GetClient(string personId)
+        public Client GetClient(string personId)
         {
-            List<ContactFormPerson> clients = cachedClients;
-            ContactFormPerson matchedClient = clients.Find((contactForm) => 
-                            contactForm.Person_1.Id == personId || contactForm.Person_2.Id == personId);
+            List<Client> clients = cachedClients;
+            Client matchedClient = clients.Find((client) => 
+                            client.ContactForm.Person_1.Id == personId || client.ContactForm.Person_2.Id == personId);
             
             return matchedClient;
         }
 
-        public void UpdateClient(ContactFormPerson formPerson)
+        public void UpdateClient(Client formPerson)
         {
             throw new NotImplementedException();
         }
 
-        private List<ContactFormPerson> ReadClients()
+        private List<Client> ReadClients()
         {
             using (StreamReader r = new StreamReader(CLIENTS_ARCHIVE_FILE_PATH))
             {
                 string json = r.ReadToEnd();
-                List<ContactFormPerson> clients = JsonConvert.DeserializeObject<List<ContactFormPerson>>(json);
+                List<Client> clients = JsonConvert.DeserializeObject<List<Client>>(json);
 
                 return clients;
             }

@@ -4,8 +4,8 @@ namespace ClientsDAO
 {
     public interface IClientDAO
     {
-        void AddNewClient(ContactFormPerson formPerson);
-        ContactFormPerson GetClient(string personId);
-        void UpdateClient(ContactFormPerson formPerson);
+        void AddNewClient(Client client);
+        Client GetClient(string personId);
+        void UpdateClient(Client client);
     }
 }
