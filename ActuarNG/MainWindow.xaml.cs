@@ -6,6 +6,8 @@ using SettingMgr;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+
 namespace ActuarNG
 {
     /// <summary>
@@ -69,6 +71,8 @@ namespace ActuarNG
             configMgr.SetSettings(settingsConfig);
         }
 
+        private Client checkListSearchedClient = null;
+
         private void check_list_search_btn_Click(object sender, RoutedEventArgs e)
         {
             IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
@@ -80,10 +84,25 @@ namespace ActuarNG
                 check_list_partner_2.Text = $"ת.ז: {client.ContactForm.Person_2.Id}, שם: {client.ContactForm.Person_2.FullName}";
 
                 check_list_DataGrid.ItemsSource = client.CheckListRows;
+                checkListSearchedClient = client;
             }
             else
             {
                 check_list_not_found_placement.Text = "הלקוח לא נמצא";
+            }
+        }
+
+        private void check_list_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
+        {
+            IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
+
+            if (e.EditAction == DataGridEditAction.Commit && checkListSearchedClient != null)
+            {
+
+                ((List<CheckListRow>)check_list_DataGrid.ItemsSource)[e.Row.GetIndex()] = e.Row.DataContext as CheckListRow;
+                checkListSearchedClient.CheckListRows[e.Row.GetIndex()] = e.Row.DataContext as CheckListRow;
+
+                clientDAO.UpdateClient(checkListSearchedClient);
             }
         }
 

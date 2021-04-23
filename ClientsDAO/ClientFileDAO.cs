@@ -41,9 +41,16 @@ namespace ClientsDAO
             return matchedClient;
         }
 
-        public void UpdateClient(Client formPerson)
+        public void UpdateClient(Client updatedClient)
         {
-            throw new NotImplementedException();
+            List<Client> clients = cachedClients;
+
+            Client client = GetClient(updatedClient.ContactForm.Person_1.Id) ?? GetClient(updatedClient.ContactForm.Person_2.Id);
+            client.ContactForm = updatedClient.ContactForm;
+            client.CheckListRows = updatedClient.CheckListRows;
+
+            string json = JsonConvert.SerializeObject(clients);
+            File.WriteAllText(CLIENTS_ARCHIVE_FILE_PATH, json);
         }
 
         private List<Client> ReadClients()

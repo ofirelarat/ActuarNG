@@ -450,23 +450,26 @@
                           SelectionUnit="Cell"
                           FlowDirection="RightToLeft"
                           AutoGenerateColumns="False"
-                          SelectionMode="Extended" >
+                          SelectionMode="Extended"
+                            CellEditEnding="check_list_DataGrid_CellEditEnding">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                   Binding="{Binding Type}"
                                   Header="סוג"
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+                                  IsReadOnly="True"/>
                                 <DataGridTextColumn
                                   Binding="{Binding Name}"
                                   Header="שם"
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+                                  IsReadOnly="True"/>
                                 <DataGridTextColumn
                                   Binding="{Binding Person_1_value}"
                                   Header="בעל"
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
                                 <DataGridTextColumn
                                   Binding="{Binding Person_2_value}"
                                   Header="אישה"
