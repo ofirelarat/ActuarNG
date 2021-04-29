@@ -48,6 +48,11 @@ namespace ClientsDAO
             return matchedClient;
         }
 
+        public List<Client> GetClients()
+        {
+            return cachedClients;
+        }
+
         public void UpdateClient(Client updatedClient)
         {
             List<Client> clients = cachedClients;

@@ -9,12 +9,13 @@ namespace PDFGeneratorLogic
     public class DocxGenerator
     {
         private ContactFormPerson contactFormPerson;
-        private string targetPath = new ConfigMgr().GetDestenationPath();
+        private string targetPath;
         //private readonly string targetPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-        public DocxGenerator(ContactFormPerson contactForm)
+        public DocxGenerator(ContactFormPerson contactForm, ConfigMgr configMgr)
         {
             contactFormPerson = contactForm;
+            targetPath = configMgr.GetDestenationPath();
         }
 
         public void GenerateNewPersonContactForm()

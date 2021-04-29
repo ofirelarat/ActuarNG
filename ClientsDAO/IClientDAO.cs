@@ -1,4 +1,5 @@
 ﻿using Common.Models;
+using System.Collections.Generic;
 
 namespace ClientsDAO
 {
@@ -6,6 +7,7 @@ namespace ClientsDAO
     {
         void AddNewClient(Client client);
         Client GetClient(string personId);
+        List<Client> GetClients();
         void UpdateClient(Client client);
     }
 }

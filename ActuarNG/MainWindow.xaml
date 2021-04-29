@@ -11,9 +11,11 @@
     <Grid>
         <!-- Nav bar panel -->
         <TabControl
-            Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
+            Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
+            SelectionChanged="TabControl_SelectionChanged">
             <!-- New Forms -->
             <TabItem
+                    x:Name="new_form_tab"
                     Header="{materialDesign:PackIcon Kind=AccountPlus, Size=24}"
                     ToolTip="יצירת לקוח חדש"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
@@ -379,6 +381,7 @@
             </TabItem>
             <!-- Client Check List -->
             <TabItem
+                    x:Name="check_list_tab"
                     Header="{materialDesign:PackIcon Kind=FormatListChecks, Size=24}"
                     ToolTip="צ'ק ליסט"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
@@ -527,19 +530,103 @@
             </TabItem>
             <!-- Clients status -->
             <TabItem
+                    x:Name="clients_status_tab"
                     Header="{materialDesign:PackIcon Kind=AccountGroupOutline, Size=24}"
                     ToolTip="סטטוס לקוחות"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>
                     <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
                                 Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                                 Text= "סטטוס לקוחות"
                                 HorizontalAlignment="Center">
                     </TextBlock>
+
+                    <Grid  
+                        Grid.Row="1"
+                        Grid.Column="1">
+                        <DataGrid
+                          x:Name="clients_status_DataGrid"
+                          CanUserAddRows="False"
+                          SelectionUnit="Cell"
+                          FlowDirection="RightToLeft"
+                          AutoGenerateColumns="False"
+                          SelectionMode="Extended"
+                            CellEditEnding="check_list_DataGrid_CellEditEnding">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                  Binding="{Binding ContactForm.CaseOwner}"
+                                  Header="בטיפול של"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                  Binding="{Binding ContactForm.Person_1.Id}"
+                                  Header="ת.ז בעל"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                  Binding="{Binding ContactForm.Person_1.FullName}"
+                                  Header="שם בעל"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                  Binding="{Binding ContactForm.Person_2.Id}"
+                                  Header="ת.ז אישה"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                  Binding="{Binding ContactForm.Person_2.FullName}"
+                                  Header="שם אישה"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                  Binding="{Binding ContactForm.CaseInfo.CaseTypeValue}"
+                                  Header="סוג תיק"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                  Binding="{Binding ContactForm.CaseInfo.CourtName}"
+                                  Header="שם הערכאה"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                  Binding="{Binding ContactForm.CaseInfo.CaseNum}"
+                                  Header="מס התיק"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                  Binding="{Binding ContactForm.CaseInfo.CaseReceivementDate}"
+                                  Header="תאריך קבלת תיק"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                  Binding="{Binding ContactForm.CaseInfo.DecisionDate}"
+                                  Header="מועד החלטה"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                  Header="סטטוס"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </Grid>
             </TabItem>
             <!-- Settings -->
             <TabItem
+                    x:Name="settings_tab"
                     Header="{materialDesign:PackIcon Kind=Cog, Size=24}"
                     ToolTip="הגדרות מערכת"
                     Style="{StaticResource MaterialDesignNavigationRailTabItem}">

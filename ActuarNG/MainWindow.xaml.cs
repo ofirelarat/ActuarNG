@@ -19,10 +19,31 @@ namespace ActuarNG
         public MainWindow()
         {
             InitializeComponent();
-            
-            ConfigMgr configMgr = new ConfigMgr();
-            destenation_folder.Text = configMgr.GetDestenationPath();
-            clients_archive_file_path.Text = configMgr.GetClientArchivePathPath();
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (new_form_tab.IsSelected)
+            {
+                // TODO: on select tab
+            }
+            if (check_list_tab.IsSelected)
+            {
+                // TODO: on select tab
+            }
+            if (clients_status_tab.IsSelected)
+            {
+                IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
+                List<Client> clients = clientDAO.GetClients();
+
+                clients_status_DataGrid.ItemsSource = clients;
+            }
+            if (settings_tab.IsSelected)
+            {
+                ConfigMgr configMgr = new ConfigMgr();
+                destenation_folder.Text = configMgr.GetDestenationPath();
+                clients_archive_file_path.Text = configMgr.GetClientArchivePathPath();
+            }
         }
 
         private void NewPersonContactFromGenerateBtn_Click(object sender, RoutedEventArgs e)
@@ -30,7 +51,7 @@ namespace ActuarNG
             new_client_progress_indicator.Visibility = Visibility.Visible;
             
             ContactFormPerson contactFormDetails = CreateContactDetails();
-            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
+            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr()) ;
 
             docxGenerator.GenerateNewPersonContactForm();
             if (IsSavingClientData.IsChecked.Value)
@@ -46,7 +67,7 @@ namespace ActuarNG
             new_client_progress_indicator.Visibility = Visibility.Visible;
 
             ContactFormPerson contactFormDetails = CreateContactDetails();
-            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
+            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
 
             docxGenerator.GenerateNewPersonEconomyDetailsForm();
 
@@ -63,7 +84,7 @@ namespace ActuarNG
             new_client_progress_indicator.Visibility = Visibility.Visible;
 
             ContactFormPerson contactFormDetails = CreateContactDetails();
-            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
+            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
 
             docxGenerator.GenerateNewPersonEmpowerForm();
 
@@ -80,7 +101,7 @@ namespace ActuarNG
             new_client_progress_indicator.Visibility = Visibility.Visible;
 
             ContactFormPerson contactFormDetails = CreateContactDetails();
-            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails);
+            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
 
             docxGenerator.GenerateNewPersonFullForm();
 
