@@ -566,7 +566,7 @@
                             CellEditEnding="check_list_DataGrid_CellEditEnding">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
-                                  Binding="{Binding ContactForm.CaseOwner}"
+                                  Binding="{Binding ContactForm.CaseOwnerValue}"
                                   Header="בטיפול של"
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                                   IsReadOnly="True"/>

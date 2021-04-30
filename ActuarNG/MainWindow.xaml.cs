@@ -122,7 +122,7 @@ namespace ActuarNG
             Client client = clientDAO.GetClient(check_list_search.Text);
             if(client != null)
             {
-                check_list_owner_name.Text = $"התיק בטיפולו של:{client.ContactForm.CaseOwner}";
+                check_list_owner_name.Text = $"התיק בטיפולו של:{client.ContactForm.CaseOwnerValue}";
                 check_list_partner_1.Text = $"ת.ז: {client.ContactForm.Person_1.Id}, שם: {client.ContactForm.Person_1.FullName}";
                 check_list_partner_2.Text = $"ת.ז: {client.ContactForm.Person_2.Id}, שם: {client.ContactForm.Person_2.FullName}";
 
@@ -170,10 +170,10 @@ namespace ActuarNG
         {
             ContactFormPerson contactFormDetails = new ContactFormPerson()
             {
-                CaseOwner = (Owner)case_owner.SelectedIndex,
+                CaseOwnerEnum = (Owner)case_owner.SelectedIndex,
                 CaseInfo = new CaseDetails()
                 {
-                    CaseTypeValue = (CaseType)case_type.SelectedIndex,
+                    CaseTypeEnum = (CaseType)case_type.SelectedIndex,
                     OpenDate = DateTime.Now,
                     DecisionDate = case_decision_date.SelectedDate ?? new DateTime(),
                     CaseReceivementDate = receiving_case_date.SelectedDate ?? new DateTime(),
