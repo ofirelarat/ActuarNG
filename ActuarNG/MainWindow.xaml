@@ -563,7 +563,7 @@
                           FlowDirection="RightToLeft"
                           AutoGenerateColumns="False"
                           SelectionMode="Extended"
-                            CellEditEnding="check_list_DataGrid_CellEditEnding">
+                            CellEditEnding="status_DataGrid_CellEditEnding">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                   Binding="{Binding ContactForm.CaseOwnerValue}"
@@ -615,10 +615,9 @@
                                   Header="מועד החלטה"
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                                   IsReadOnly="True"/>
-                                <DataGridTextColumn
-                                  Header="סטטוס"
-                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                  IsReadOnly="True"/>
+                                <DataGridComboBoxColumn
+                                    x:Name="clients_status_status"
+                                    Header="סטטוס"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
@@ -672,9 +671,10 @@
                               Grid.Row="4"
                               Style="{StaticResource MaterialDesignRaisedAccentButton}"
                               Width="250"
-                              Content="שמירה" Click="SaveSettingsConfig_Click" Margin="242,114,242,115" />
+                              Content="שמירה" Click="SaveSettingsConfig_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>
+
     </Grid>
 </Window>

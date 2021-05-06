@@ -37,6 +37,7 @@ namespace ActuarNG
                 List<Client> clients = clientDAO.GetClients();
 
                 clients_status_DataGrid.ItemsSource = clients;
+                clients_status_status.ItemsSource = new string[]{ "לקוח חדש", "שילם מקדמה", "סגור"};
             }
             if (settings_tab.IsSelected)
             {
@@ -154,6 +155,17 @@ namespace ActuarNG
             check_list_progress_indicator.Visibility = Visibility.Hidden;
         }
 
+        private void status_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
+        {
+            IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
+
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                Client client = e.Row.DataContext as Client;
+                clientDAO.UpdateClient(client);
+            }
+        }
+
         private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)
         {
             SettingsConfig settingsConfig = new SettingsConfig()
@@ -208,6 +220,7 @@ namespace ActuarNG
         {
             Client client = new Client()
             {
+                StatusEnum = ClientStatus.NewClient,
                 ContactForm = contactFormDetails,
                 CheckListRows = checkListRows
             };
