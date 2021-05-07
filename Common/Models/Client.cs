@@ -17,9 +17,7 @@ namespace Common.Models
 
     public class Client
     {
-        public static List<string> ClientStatuses { get { return clientStatusEnums.Select(x => x.Value).ToList(); } }
-
-        private static Dictionary<ClientStatus, string> clientStatusEnums = new Dictionary<ClientStatus, string>()
+        public static Dictionary<ClientStatus, string> clientStatusEnums = new Dictionary<ClientStatus, string>()
         {
             { ClientStatus.NewClient, "לקוח חדש" },
             { ClientStatus.WaitingForReservation, "ממתין לטופס הזמנת עבודה" },
@@ -29,8 +27,7 @@ namespace Common.Models
             { ClientStatus.Close, "סגור" },
         };
 
-        public ClientStatus StatusEnum { get; set; }
-        public string StatusValue{ get { return clientStatusEnums[StatusEnum]; } set { StatusEnum = clientStatusEnums.First(x => x.Value == value).Key; } }
+        public string StatusValue{ get; set; }
         public ContactFormPerson ContactForm { get; set; }
         public List<CheckListRow> CheckListRows { get; set; }
     }

@@ -60,6 +60,7 @@ namespace ClientsDAO
             Client client = GetClient(updatedClient.ContactForm.Person_1.Id) ?? GetClient(updatedClient.ContactForm.Person_2.Id);
             client.ContactForm = updatedClient.ContactForm;
             client.CheckListRows = updatedClient.CheckListRows;
+            client.StatusValue = updatedClient.StatusValue;
 
             string json = JsonConvert.SerializeObject(clients);
             File.WriteAllText(CLIENTS_ARCHIVE_FILE_PATH, json);

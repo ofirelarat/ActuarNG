@@ -563,7 +563,7 @@
                           FlowDirection="RightToLeft"
                           AutoGenerateColumns="False"
                           SelectionMode="Extended"
-                            CellEditEnding="status_DataGrid_CellEditEnding">
+                            RowEditEnding="status_DataGrid_RowEditEnding">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                   Binding="{Binding ContactForm.CaseOwnerValue}"
@@ -618,6 +618,7 @@
 
                                 <DataGridTextColumn
                                   Header="סטטוס"
+                                  Binding="{Binding StatusValue}"
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                                   IsReadOnly="False"/>
                             </DataGrid.Columns>

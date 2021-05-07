@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Linq;
 
 namespace ActuarNG
 {
@@ -60,6 +61,7 @@ namespace ActuarNG
                 error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
+
 
         private void NewPersonContactFromGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -227,6 +229,40 @@ namespace ActuarNG
             }
         }
 
+        private void status_DataGrid_RowEditEnding(object sender, System.Windows.Controls.DataGridRowEditEndingEventArgs e)
+        {
+            try
+            {
+                IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
+
+                if (e.EditAction == DataGridEditAction.Commit)
+                {
+                    Client client = e.Row.DataContext as Client;
+                    if (!Client.clientStatusEnums.Any(x => x.Value == client.StatusValue))
+                    {
+                        throw new ArgumentException("not valid status");
+                    }
+
+                    clientDAO.UpdateClient(client);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
+            }
+            catch (ArgumentException)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "סטטוס לא קיים במערכת";
+            }
+            catch (Exception)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+            }
+        }
+
         private void status_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
             try
@@ -236,6 +272,11 @@ namespace ActuarNG
                 if (e.EditAction == DataGridEditAction.Commit)
                 {
                     Client client = e.Row.DataContext as Client;
+                    if(!Client.clientStatusEnums.Any(x => x.Value == client.StatusValue))
+                    {
+                        throw new ArgumentException("not valid status");
+                    }
+
                     clientDAO.UpdateClient(client);
                 }
             }
@@ -243,6 +284,11 @@ namespace ActuarNG
             {
                 error_snack_bar.IsActive = true;
                 error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
+            }
+            catch (ArgumentException)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "סטטוס לא קיים במערכת";
             }
             catch (Exception)
             {
@@ -295,7 +341,6 @@ namespace ActuarNG
                 PartnershipStartDate = partnership_start.SelectedDate ?? new DateTime(),
                 WorkEssence = work_essence.Text,
                 CreationDate = DateTime.Now
-
             };
 
             return contactFormDetails;
@@ -305,7 +350,7 @@ namespace ActuarNG
         {
             Client client = new Client()
             {
-                StatusEnum = ClientStatus.NewClient,
+                StatusValue = Client.clientStatusEnums[ClientStatus.NewClient],
                 ContactForm = contactFormDetails,
                 CheckListRows = checkListRows
             };
