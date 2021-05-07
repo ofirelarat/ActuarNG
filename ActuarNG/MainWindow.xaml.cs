@@ -5,6 +5,7 @@ using PDFGeneratorLogic;
 using SettingMgr;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -23,146 +24,230 @@ namespace ActuarNG
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (new_form_tab.IsSelected)
+            try
             {
-                // TODO: on select tab
-            }
-            if (check_list_tab.IsSelected)
-            {
-                // TODO: on select tab
-            }
-            if (clients_status_tab.IsSelected)
-            {
-                IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
-                List<Client> clients = clientDAO.GetClients();
+                if (new_form_tab.IsSelected)
+                {
+                    // TODO: on select tab
+                }
+                if (check_list_tab.IsSelected)
+                {
+                    // TODO: on select tab
+                }
+                if (clients_status_tab.IsSelected)
+                {
+                    IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
+                    List<Client> clients = clientDAO.GetClients();
 
-                clients_status_DataGrid.ItemsSource = clients;
-                clients_status_status.ItemsSource = new string[]{ "לקוח חדש", "שילם מקדמה", "סגור"};
+                    clients_status_DataGrid.ItemsSource = clients;
+                    // clients_status_status.ItemsSource = Client.ClientStatuses;
+                }
+                if (settings_tab.IsSelected)
+                {
+                    ConfigMgr configMgr = new ConfigMgr();
+                    destenation_folder.Text = configMgr.GetDestenationPath();
+                    clients_archive_file_path.Text = configMgr.GetClientArchivePathPath();
+                }
             }
-            if (settings_tab.IsSelected)
+            catch (FileNotFoundException)
             {
-                ConfigMgr configMgr = new ConfigMgr();
-                destenation_folder.Text = configMgr.GetDestenationPath();
-                clients_archive_file_path.Text = configMgr.GetClientArchivePathPath();
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
+            }
+            catch (Exception)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
 
         private void NewPersonContactFromGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
-            new_client_progress_indicator.Visibility = Visibility.Visible;
-            
-            ContactFormPerson contactFormDetails = CreateContactDetails();
-            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr()) ;
-
-            docxGenerator.GenerateNewPersonContactForm();
-            if (IsSavingClientData.IsChecked.Value)
+            try
             {
-                AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
-            }
+                ContactFormPerson contactFormDetails = CreateContactDetails();
+                DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
 
-            new_client_progress_indicator.Visibility = Visibility.Hidden;
+                docxGenerator.GenerateNewPersonContactForm();
+                if (IsSavingClientData.IsChecked.Value)
+                {
+                    AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
+            }
+            catch (Exception)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+            }
         }
 
         private void NewPersonEconomyFormGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
-            new_client_progress_indicator.Visibility = Visibility.Visible;
-
-            ContactFormPerson contactFormDetails = CreateContactDetails();
-            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
-
-            docxGenerator.GenerateNewPersonEconomyDetailsForm();
-
-            if (IsSavingClientData.IsChecked.Value)
+            try
             {
-                AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
-            }
+                ContactFormPerson contactFormDetails = CreateContactDetails();
+                DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
 
-            new_client_progress_indicator.Visibility = Visibility.Hidden;
+                docxGenerator.GenerateNewPersonEconomyDetailsForm();
+
+                if (IsSavingClientData.IsChecked.Value)
+                {
+                    AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
+            }
+            catch (Exception)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+            }
         }
 
         private void NewPersonEmpowerFormGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
-            new_client_progress_indicator.Visibility = Visibility.Visible;
-
-            ContactFormPerson contactFormDetails = CreateContactDetails();
-            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
-
-            docxGenerator.GenerateNewPersonEmpowerForm();
-
-            if (IsSavingClientData.IsChecked.Value)
+            try
             {
-                AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
-            }
+                ContactFormPerson contactFormDetails = CreateContactDetails();
+                DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
 
-            new_client_progress_indicator.Visibility = Visibility.Hidden;
+                docxGenerator.GenerateNewPersonEmpowerForm();
+
+                if (IsSavingClientData.IsChecked.Value)
+                {
+                    AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
+            }
+            catch (Exception)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+            }
         }
 
         private void NewPersonFullFormGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
-            new_client_progress_indicator.Visibility = Visibility.Visible;
-
-            ContactFormPerson contactFormDetails = CreateContactDetails();
-            DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
-
-            docxGenerator.GenerateNewPersonFullForm();
-
-            if (IsSavingClientData.IsChecked.Value)
+            try
             {
-                AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
-            }
+                new_client_progress_indicator.Visibility = Visibility.Visible;
 
-            new_client_progress_indicator.Visibility = Visibility.Hidden;
+                ContactFormPerson contactFormDetails = CreateContactDetails();
+                DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
+
+                docxGenerator.GenerateNewPersonFullForm();
+
+                if (IsSavingClientData.IsChecked.Value)
+                {
+                    AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
+                }
+
+            }
+            catch (FileNotFoundException)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
+            }
+            catch (Exception)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+            }
         }
 
         private Client checkListSearchedClient = null;
         private void check_list_search_btn_Click(object sender, RoutedEventArgs e)
         {
-            check_list_progress_indicator.Visibility = Visibility.Visible;
-
-            IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
-            Client client = clientDAO.GetClient(check_list_search.Text);
-            if(client != null)
+            try
             {
-                check_list_owner_name.Text = $"התיק בטיפולו של:{client.ContactForm.CaseOwnerValue}";
-                check_list_partner_1.Text = $"ת.ז: {client.ContactForm.Person_1.Id}, שם: {client.ContactForm.Person_1.FullName}";
-                check_list_partner_2.Text = $"ת.ז: {client.ContactForm.Person_2.Id}, שם: {client.ContactForm.Person_2.FullName}";
+                IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
+                Client client = clientDAO.GetClient(check_list_search.Text);
+                if (client != null)
+                {
+                    check_list_owner_name.Text = $"התיק בטיפולו של:{client.ContactForm.CaseOwnerValue}";
+                    check_list_partner_1.Text = $"ת.ז: {client.ContactForm.Person_1.Id}, שם: {client.ContactForm.Person_1.FullName}";
+                    check_list_partner_2.Text = $"ת.ז: {client.ContactForm.Person_2.Id}, שם: {client.ContactForm.Person_2.FullName}";
 
-                check_list_DataGrid.ItemsSource = client.CheckListRows;
-                checkListSearchedClient = client;
+                    check_list_DataGrid.ItemsSource = client.CheckListRows;
+                    checkListSearchedClient = client;
+                }
+                else
+                {
+                    check_list_not_found_placement.Text = "הלקוח לא נמצא";
+                }
             }
-            else
+            catch (FileNotFoundException)
             {
-                check_list_not_found_placement.Text = "הלקוח לא נמצא";
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
             }
-
-            check_list_progress_indicator.Visibility = Visibility.Hidden;
+            catch (Exception)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+            }
         }
         private void check_list_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
-            check_list_progress_indicator.Visibility = Visibility.Visible;
-
-            IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
-
-            if (e.EditAction == DataGridEditAction.Commit && checkListSearchedClient != null)
+            try
             {
+                IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
 
-                ((List<CheckListRow>)check_list_DataGrid.ItemsSource)[e.Row.GetIndex()] = e.Row.DataContext as CheckListRow;
-                checkListSearchedClient.CheckListRows[e.Row.GetIndex()] = e.Row.DataContext as CheckListRow;
+                if (e.EditAction == DataGridEditAction.Commit && checkListSearchedClient != null)
+                {
 
-                clientDAO.UpdateClient(checkListSearchedClient);
+                    ((List<CheckListRow>)check_list_DataGrid.ItemsSource)[e.Row.GetIndex()] = e.Row.DataContext as CheckListRow;
+                    checkListSearchedClient.CheckListRows[e.Row.GetIndex()] = e.Row.DataContext as CheckListRow;
+
+                    clientDAO.UpdateClient(checkListSearchedClient);
+                }
+
             }
-
-            check_list_progress_indicator.Visibility = Visibility.Hidden;
+            catch (FileNotFoundException)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
+            }
+            catch (Exception)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+            }
         }
 
         private void status_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
-            IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
-
-            if (e.EditAction == DataGridEditAction.Commit)
+            try
             {
-                Client client = e.Row.DataContext as Client;
-                clientDAO.UpdateClient(client);
+                IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
+
+                if (e.EditAction == DataGridEditAction.Commit)
+                {
+                    Client client = e.Row.DataContext as Client;
+                    clientDAO.UpdateClient(client);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
+            }
+            catch (Exception)
+            {
+                error_snack_bar.IsActive = true;
+                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
 

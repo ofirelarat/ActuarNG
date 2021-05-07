@@ -615,9 +615,11 @@
                                   Header="מועד החלטה"
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                                   IsReadOnly="True"/>
-                                <DataGridComboBoxColumn
-                                    x:Name="clients_status_status"
-                                    Header="סטטוס"/>
+
+                                <DataGridTextColumn
+                                  Header="סטטוס"
+                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                  IsReadOnly="False"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
@@ -676,5 +678,13 @@
             </TabItem>
         </TabControl>
 
+            <!-- long hand form for setting the message -->
+        <materialDesign:Snackbar
+              x:Name="error_snack_bar"
+              IsActive="False">
+            <materialDesign:SnackbarMessage
+                x:Name="error_message_snack_bar"
+                Content=""/>
+        </materialDesign:Snackbar>
     </Grid>
 </Window>

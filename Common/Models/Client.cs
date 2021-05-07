@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Common.Models
 {
@@ -16,7 +17,9 @@ namespace Common.Models
 
     public class Client
     {
-        private Dictionary<ClientStatus, string> clientStatusEnums = new Dictionary<ClientStatus, string>()
+        public static List<string> ClientStatuses { get { return clientStatusEnums.Select(x => x.Value).ToList(); } }
+
+        private static Dictionary<ClientStatus, string> clientStatusEnums = new Dictionary<ClientStatus, string>()
         {
             { ClientStatus.NewClient, "לקוח חדש" },
             { ClientStatus.WaitingForReservation, "ממתין לטופס הזמנת עבודה" },
@@ -27,7 +30,7 @@ namespace Common.Models
         };
 
         public ClientStatus StatusEnum { get; set; }
-        public string StatusValue{ get { return clientStatusEnums[StatusEnum]; } }
+        public string StatusValue{ get { return clientStatusEnums[StatusEnum]; } set { StatusEnum = clientStatusEnums.First(x => x.Value == value).Key; } }
         public ContactFormPerson ContactForm { get; set; }
         public List<CheckListRow> CheckListRows { get; set; }
     }
