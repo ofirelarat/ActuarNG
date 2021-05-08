@@ -599,6 +599,30 @@
             </TabItem>
             <!-- Settings -->
             <TabItem
+                    x:Name="assignments_tab"
+                    Header="{materialDesign:PackIcon Kind=ClipboardCheck, Size=24}"
+                    ToolTip="טבלת משימות"
+                    Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                                Text= "טבלת משימות"
+                                HorizontalAlignment="Center" Grid.RowSpan="2">
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+            <!-- Settings -->
+            <TabItem
                     x:Name="settings_tab"
                     Header="{materialDesign:PackIcon Kind=Cog, Size=24}"
                     ToolTip="הגדרות מערכת"
@@ -610,11 +634,10 @@
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="48*" />
-                        <RowDefinition Height="213*"/>
-                        <RowDefinition Height="131*" />
-                        <RowDefinition Height="131*" />
-                        <RowDefinition Height="261*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="2*" />
                     </Grid.RowDefinitions>
                     <TextBlock
                                 Grid.Row="0"
@@ -626,7 +649,7 @@
                     <TextBox
                               x:Name="destenation_folder"
                               Grid.Column="1"
-                              Grid.Row="2"
+                              Grid.Row="1"
                               HorizontalContentAlignment="Right"
                               materialDesign:HintAssist.Hint="תיקיית יעד"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -634,7 +657,7 @@
                     <TextBox
                               x:Name="clients_archive_file_path"
                               Grid.Column="1"
-                              Grid.Row="3"
+                              Grid.Row="2"
                               HorizontalContentAlignment="Right"
                               materialDesign:HintAssist.Hint="קובץ לקוחות"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -642,7 +665,7 @@
                     <Button
                               x:Name="saveSettingsConfig"
                               Grid.Column="1"
-                              Grid.Row="4"
+                              Grid.Row="3"
                               Style="{StaticResource MaterialDesignRaisedAccentButton}"
                               Width="250"
                               Content="שמירה" Click="SaveSettingsConfig_Click"/>
@@ -650,7 +673,7 @@
             </TabItem>
         </TabControl>
 
-            <!-- long hand form for setting the message -->
+        <!-- long hand form for setting the message -->
         <materialDesign:Snackbar
               x:Name="error_snack_bar"
               IsActive="False">
