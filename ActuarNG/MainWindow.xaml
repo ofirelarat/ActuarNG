@@ -37,21 +37,7 @@
                                 Text= "יצירת טפסי לקוחות אוטומטית"
                                 HorizontalAlignment="Center" >
                     </TextBlock>
-                    <materialDesign:Card
-                            x:Name="new_client_progress_indicator"
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            UniformCornerRadius="14"
-                            Padding="4"
-                            Visibility="Hidden"
-                            Height="35"
-                            Width="35">
-                        <ProgressBar
-                            Style="{StaticResource MaterialDesignCircularProgressBar}"
-                            Value="50"
-                            IsIndeterminate="True" />
-                    </materialDesign:Card>
-                    
+
                     <Grid
                          Grid.Row="1"
                          Grid.Column="1">
@@ -405,21 +391,6 @@
                                 Text= "צ'ק ליסט"
                                 HorizontalAlignment="Center">
                     </TextBlock>
-                    <materialDesign:Card
-                            x:Name="check_list_progress_indicator"
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            UniformCornerRadius="14"
-                            Padding="4"
-                            Visibility="Hidden"
-                            Height="35"
-                            Width="35">
-                        <ProgressBar
-                            Style="{StaticResource MaterialDesignCircularProgressBar}"
-                            Value="50"
-                            IsIndeterminate="True" />
-                    </materialDesign:Card>
-                    
                     <Grid
                         Grid.Row="1"
                         Grid.Column="1">
@@ -563,7 +534,7 @@
                           FlowDirection="RightToLeft"
                           AutoGenerateColumns="False"
                           SelectionMode="Extended"
-                            RowEditEnding="status_DataGrid_RowEditEnding">
+                          CellEditEnding="status_DataGrid_CellEditEnding">
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                   Binding="{Binding ContactForm.CaseOwnerValue}"
@@ -685,7 +656,8 @@
               IsActive="False">
             <materialDesign:SnackbarMessage
                 x:Name="error_message_snack_bar"
-                Content=""/>
+                Content=""
+                ActionContent="סגור"/>
         </materialDesign:Snackbar>
     </Grid>
 </Window>

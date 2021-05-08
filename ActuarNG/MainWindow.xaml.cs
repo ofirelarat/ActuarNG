@@ -9,6 +9,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
+using System.Reflection;
 
 namespace ActuarNG
 {
@@ -21,6 +22,9 @@ namespace ActuarNG
         public MainWindow()
         {
             InitializeComponent();
+
+            error_snack_bar.IsActive = false;
+            error_message_snack_bar.ActionClick += (object sender, RoutedEventArgs e) => error_snack_bar.IsActive = false;
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -41,7 +45,6 @@ namespace ActuarNG
                     List<Client> clients = clientDAO.GetClients();
 
                     clients_status_DataGrid.ItemsSource = clients;
-                    // clients_status_status.ItemsSource = Client.ClientStatuses;
                 }
                 if (settings_tab.IsSelected)
                 {
@@ -144,8 +147,6 @@ namespace ActuarNG
         {
             try
             {
-                new_client_progress_indicator.Visibility = Visibility.Visible;
-
                 ContactFormPerson contactFormDetails = CreateContactDetails();
                 DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
 
@@ -209,9 +210,10 @@ namespace ActuarNG
 
                 if (e.EditAction == DataGridEditAction.Commit && checkListSearchedClient != null)
                 {
-
-                    ((List<CheckListRow>)check_list_DataGrid.ItemsSource)[e.Row.GetIndex()] = e.Row.DataContext as CheckListRow;
                     checkListSearchedClient.CheckListRows[e.Row.GetIndex()] = e.Row.DataContext as CheckListRow;
+                    
+                    Type checkListRowType = typeof(CheckListRow);
+                    checkListRowType.GetProperty(e.Column.SortMemberPath).SetValue(checkListSearchedClient.CheckListRows[e.Row.GetIndex()], ((TextBox)e.EditingElement).Text);
 
                     clientDAO.UpdateClient(checkListSearchedClient);
                 }
@@ -229,7 +231,7 @@ namespace ActuarNG
             }
         }
 
-        private void status_DataGrid_RowEditEnding(object sender, System.Windows.Controls.DataGridRowEditEndingEventArgs e)
+        private void status_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
             try
             {
@@ -237,7 +239,9 @@ namespace ActuarNG
 
                 if (e.EditAction == DataGridEditAction.Commit)
                 {
+                    var editBox = e.EditingElement as TextBox;
                     Client client = e.Row.DataContext as Client;
+                    client.StatusValue = editBox.Text;
                     if (!Client.clientStatusEnums.Any(x => x.Value == client.StatusValue))
                     {
                         throw new ArgumentException("not valid status");
@@ -254,41 +258,7 @@ namespace ActuarNG
             catch (ArgumentException)
             {
                 error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "סטטוס לא קיים במערכת";
-            }
-            catch (Exception)
-            {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
-            }
-        }
-
-        private void status_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
-        {
-            try
-            {
-                IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
-
-                if (e.EditAction == DataGridEditAction.Commit)
-                {
-                    Client client = e.Row.DataContext as Client;
-                    if(!Client.clientStatusEnums.Any(x => x.Value == client.StatusValue))
-                    {
-                        throw new ArgumentException("not valid status");
-                    }
-
-                    clientDAO.UpdateClient(client);
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
-            }
-            catch (ArgumentException)
-            {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "סטטוס לא קיים במערכת";
+                error_message_snack_bar.Content = "סטטוס לא קיים במערכת, השינוי לא נשמר אנא נסה סטטוס אחר";
             }
             catch (Exception)
             {
