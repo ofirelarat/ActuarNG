@@ -33,7 +33,7 @@ namespace Common.Models
         public DateTime CaseReceivementDate { get; set; }
         public string PublishDays { get; set; }
         public string CourtName { get; set; }
-        public int CaseNum { get; set; }
+        public string CaseNum { get; set; }
         public string JudgeName { get; set; }
     }
 }

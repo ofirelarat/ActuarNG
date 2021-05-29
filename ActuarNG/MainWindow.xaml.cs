@@ -292,7 +292,7 @@ namespace ActuarNG
                     CaseReceivementDate = receiving_case_date.SelectedDate ?? new DateTime(),
                     PublishDays = publish_days.Text,
                     CourtName = court_name.Text,
-                    CaseNum = int.Parse(case_num.Text),
+                    CaseNum = case_num.Text,
                     JudgeName = judge_name.Text
                 },
                 Person_1 = new Person()
