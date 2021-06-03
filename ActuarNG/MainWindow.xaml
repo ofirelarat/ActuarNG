@@ -127,13 +127,17 @@
                                   Grid.Row="2"
                                   Grid.Column="1"
                                   FlowDirection="RightToLeft"
-                                  materialDesign:HintAssist.Hint="מועד החלטה" Grid.ColumnSpan="4" Margin="60,0,0,0" />
+                                  materialDesign:HintAssist.Hint="מועד החלטה"
+                                  Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                  Grid.ColumnSpan="4" Margin="60,0,0,0" />
                             <DatePicker
                                   x:Name="receiving_case_date"
                                   Grid.Row="3"
                                   Grid.Column="1"
                                   FlowDirection="RightToLeft"
-                                  materialDesign:HintAssist.Hint="מועד קבלת ההתיק" Grid.ColumnSpan="4" Margin="60,0,0,0" />
+                                  materialDesign:HintAssist.Hint="מועד קבלת ההתיק"
+                                  Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                  Grid.ColumnSpan="4" Margin="60,0,0,0" />
                             <TextBox
                                   x:Name="publish_days"
                                   Grid.Row="4"
@@ -197,6 +201,7 @@
                                   Grid.Column="2"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד תחילת תקופת השיתוף"
+                                  Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                   VerticalAlignment="Center" />
                             <DatePicker
                                   x:Name="partnership_end"
@@ -204,6 +209,7 @@
                                   Grid.Column="0"
                                   FlowDirection="RightToLeft"
                                   materialDesign:HintAssist.Hint="מועד הקרע"
+                                  Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                   VerticalAlignment="Center" />
 
                             <Border  
