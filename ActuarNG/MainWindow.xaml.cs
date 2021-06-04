@@ -31,22 +31,22 @@ namespace ActuarNG
         {
             try
             {
-                if (new_form_tab.IsSelected)
+                if (new_form_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
+                {
+                    ClearNewClientFormTab();
+                }
+                if (check_list_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
                     // TODO: on select tab
                 }
-                if (check_list_tab.IsSelected)
-                {
-                    // TODO: on select tab
-                }
-                if (clients_status_tab.IsSelected)
+                if (clients_status_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
                     IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
                     List<Client> clients = clientDAO.GetClients();
 
                     clients_status_DataGrid.ItemsSource = clients;
                 }
-                if (settings_tab.IsSelected)
+                if (settings_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
                     ConfigMgr configMgr = new ConfigMgr();
                     destenation_folder.Text = configMgr.GetDestenationPath();
@@ -314,6 +314,31 @@ namespace ActuarNG
             };
 
             return contactFormDetails;
+        }
+
+        private void ClearNewClientFormTab()
+        {
+            case_owner.SelectedIndex = -1;
+
+            case_type.SelectedIndex = -1;
+            case_decision_date.SelectedDate = null;
+            receiving_case_date.SelectedDate = null;
+            publish_days.Clear();
+            court_name.Clear();
+            case_num.Clear();
+            judge_name.Clear();
+
+            fullName_1.Clear();
+            id_1.Clear();
+            birth_date_1.SelectedDate = null;
+
+            fullName_2.Clear();
+            id_2.Clear();
+            birth_date_2.SelectedDate = null;
+
+            partnership_end.SelectedDate = null;
+            partnership_start.SelectedDate = null;
+            work_essence.Text = "ביצוע דוח איזון המשאבים שצברו הצדדים בתקופת החיים המשותפים כפי שיועברו על ידי הצדדים.";
         }
 
         private void AddNewClient(ContactFormPerson contactFormDetails, List<CheckListRow> checkListRows)
