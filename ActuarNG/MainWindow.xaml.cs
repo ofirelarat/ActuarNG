@@ -33,7 +33,7 @@ namespace ActuarNG
             {
                 if (new_form_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
-                    ClearNewClientFormTab();
+                    ClearNewClientFormTab(); 
                 }
                 if (check_list_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
@@ -242,7 +242,7 @@ namespace ActuarNG
                     var editBox = e.EditingElement as TextBox;
                     Client client = e.Row.DataContext as Client;
                     client.StatusValue = editBox.Text;
-                    if (!Client.clientStatusEnums.Any(x => x.Value == client.StatusValue))
+                    if (!Client.ClientStatusEnums.Any(x => x.Value == client.StatusValue))
                     {
                         throw new ArgumentException("not valid status");
                     }
@@ -345,7 +345,7 @@ namespace ActuarNG
         {
             Client client = new Client()
             {
-                StatusValue = Client.clientStatusEnums[ClientStatus.NewClient],
+                StatusValue = Client.ClientStatusEnums[ClientStatus.NewClient],
                 ContactForm = contactFormDetails,
                 CheckListRows = checkListRows
             };

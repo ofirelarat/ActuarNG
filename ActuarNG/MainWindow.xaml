@@ -598,6 +598,13 @@
                                   Binding="{Binding StatusValue}"
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                                   IsReadOnly="False"/>
+
+                                <DataGridComboBoxColumn 
+                                    Header="Column With Predefined Values"
+                                    ItemsSource="{Binding ClientStatusEnums}"
+                                    SelectedValueBinding="{Binding Key}"
+                                    SelectedValuePath="Key"
+                                    DisplayMemberPath="Value" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

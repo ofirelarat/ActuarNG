@@ -17,7 +17,9 @@ namespace Common.Models
 
     public class Client
     {
-        public static Dictionary<ClientStatus, string> clientStatusEnums = new Dictionary<ClientStatus, string>()
+        //public IEnumerable<Tuple<ClientStatus, string>> Statuses = ClientStatusEnums.Select(x => new { id = x.Key, title = x.Value });
+
+        public static Dictionary<ClientStatus, string> ClientStatusEnums = new Dictionary<ClientStatus, string>()
         {
             { ClientStatus.NewClient, "לקוח חדש" },
             { ClientStatus.WaitingForReservation, "ממתין לטופס הזמנת עבודה" },
