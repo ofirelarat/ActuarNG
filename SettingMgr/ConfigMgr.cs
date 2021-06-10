@@ -1,10 +1,6 @@
 ﻿using Common.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace SettingMgr
 {
@@ -35,7 +31,7 @@ namespace SettingMgr
             File.WriteAllText(SETTINGS_PATH, json);
         }
 
-        public SettingsConfig GetConfigsData()
+        private SettingsConfig GetConfigsData()
         {
             using (StreamReader r = new StreamReader(SETTINGS_PATH))
             {
