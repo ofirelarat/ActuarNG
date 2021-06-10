@@ -11,6 +11,7 @@
     <Grid>
         <!-- Nav bar panel -->
         <TabControl
+            x:Name="tabs_control"
             Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
             SelectionChanged="TabControl_SelectionChanged">
             <!-- New Forms -->
@@ -540,7 +541,7 @@
                           FlowDirection="RightToLeft"
                           AutoGenerateColumns="False"
                           SelectionMode="Extended"
-                          CellEditEnding="status_DataGrid_CellEditEnding">
+                          CellEditEnding="status_DataGrid_CellEditEnding" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                   Binding="{Binding ContactForm.CaseOwnerValue}"

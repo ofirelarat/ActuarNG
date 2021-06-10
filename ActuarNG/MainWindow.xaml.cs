@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Input;
 
 namespace ActuarNG
 {
@@ -18,6 +19,7 @@ namespace ActuarNG
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool isSourceFromOtherTab = false;
 
         public MainWindow()
         {
@@ -25,28 +27,37 @@ namespace ActuarNG
 
             error_snack_bar.IsActive = false;
             error_message_snack_bar.ActionClick += (object sender, RoutedEventArgs e) => error_snack_bar.IsActive = false;
+
+            Style rowStyle = new Style(typeof(DataGridRow));
+            rowStyle.Setters.Add(new EventSetter(DataGridRow.MouseDoubleClickEvent,
+                                     new MouseButtonEventHandler(clients_status_DataGrid_MouseDoubleClick)));
+            clients_status_DataGrid.RowStyle = rowStyle;
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                if (new_form_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
+                if (new_form_tab.IsSelected && isSourceFromOtherTab)
+                {
+                    isSourceFromOtherTab = false;
+                }
+                else if (new_form_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
                     ClearNewClientFormTab();
                 }
-                if (check_list_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
+                else if (check_list_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
                     // TODO: on select tab
                 }
-                if (clients_status_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
+                else if (clients_status_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
                     IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
                     List<Client> clients = clientDAO.GetClients();
 
                     clients_status_DataGrid.ItemsSource = clients;
                 }
-                if (settings_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
+                else if (settings_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
                     ConfigMgr configMgr = new ConfigMgr();
                     destenation_folder.Text = configMgr.GetDestenationPath();
@@ -267,6 +278,19 @@ namespace ActuarNG
             }
         }
 
+        private void clients_status_DataGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DataGridRow row = sender as DataGridRow;
+            Client client = row.DataContext as Client;
+            GenerateFormsForExistClient(client);
+
+            Dispatcher.BeginInvoke((Action)(() =>
+            {
+                isSourceFromOtherTab = true;
+                tabs_control.SelectedIndex = 0;
+            }));
+        }
+
         private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)
         {
             SettingsConfig settingsConfig = new SettingsConfig()
@@ -339,6 +363,31 @@ namespace ActuarNG
             partnership_end.SelectedDate = null;
             partnership_start.SelectedDate = null;
             work_essence.Text = "ביצוע דוח איזון המשאבים שצברו הצדדים בתקופת החיים המשותפים כפי שיועברו על ידי הצדדים.";
+        }
+
+        private void GenerateFormsForExistClient(Client client)
+        {
+            case_owner.SelectedIndex = (int)client.ContactForm.CaseOwnerEnum;
+
+            case_type.SelectedIndex = (int)client.ContactForm.CaseInfo.CaseTypeEnum;
+            case_decision_date.SelectedDate = client.ContactForm.CaseInfo.DecisionDate;
+            receiving_case_date.SelectedDate = client.ContactForm.CaseInfo.CaseReceivementDate;
+            publish_days.Text = client.ContactForm.CaseInfo.PublishDays;
+            court_name.Text = client.ContactForm.CaseInfo.CourtName;
+            case_num.Text = client.ContactForm.CaseInfo.CaseNum;
+            judge_name.Text = client.ContactForm.CaseInfo.JudgeName;
+
+            fullName_1.Text = client.ContactForm.Person_1.FullName;
+            id_1.Text = client.ContactForm.Person_1.Id;
+            birth_date_1.SelectedDate = client.ContactForm.Person_1.BirthDate;
+
+            fullName_2.Text = client.ContactForm.Person_2.FullName;
+            id_2.Text = client.ContactForm.Person_2.Id;
+            birth_date_2.SelectedDate = client.ContactForm.Person_2.BirthDate;
+
+            partnership_end.SelectedDate = client.ContactForm.PartnershipEndDate;
+            partnership_start.SelectedDate = client.ContactForm.PartnershipStartDate;
+            work_essence.Text = client.ContactForm.WorkEssence;
         }
 
         private void AddNewClient(ContactFormPerson contactFormDetails, List<CheckListRow> checkListRows)
