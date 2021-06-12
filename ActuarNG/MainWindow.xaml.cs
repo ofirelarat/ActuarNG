@@ -394,7 +394,7 @@ namespace ActuarNG
         {
             Client client = new Client()
             {
-                StatusValue = Client.clientStatusEnums[ClientStatus.NewClient],
+                StatusValue = Client.clientStatusEnums[ClientStatus.YetToBegin],
                 ContactForm = contactFormDetails,
                 CheckListRows = checkListRows
             };

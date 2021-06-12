@@ -65,13 +65,29 @@
                                     materialDesign:HintAssist.Hint="שם מטפל"
                                     HorizontalContentAlignment="Right" Grid.ColumnSpan="2">
                                 <ComboBoxItem
-                                        Content="דניאל" />
+                                        Content="עומר" />
                                 <ComboBoxItem
-                                        Content="יוסי" />
+                                        Content="נטלי" />
+                                <ComboBoxItem
+                                        Content="תומר" />
                                 <ComboBoxItem
                                         Content="אבי" />
                                 <ComboBoxItem
-                                        Content="שרון" />
+                                        Content="לאוניד" />
+                                <ComboBoxItem
+                                        Content="יובל" />
+                                <ComboBoxItem
+                                        Content="אלה" />
+                                <ComboBoxItem
+                                        Content="חן" />
+                                <ComboBoxItem
+                                        Content="ליאור" />
+                                <ComboBoxItem
+                                        Content="עוז" />
+                                <ComboBoxItem
+                                        Content="אוראל" />
+                                <ComboBoxItem
+                                        Content="אופיר" />
                             </ComboBox>
 
                             <CheckBox

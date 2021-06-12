@@ -1,25 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Common.Models
 {
     public enum Owner
     {
-        Daniel,
-        Yosi,
+        Omer,
+        Natali,
+        Tomer,
         Avi,
-        Sharon
+        Leonid,
+        Yuval,
+        Ela,
+        Chen,
+        Lior,
+        Oz,
+        Orel,
+        Ofir
     }
 
     public class ContactFormPerson
     {
-        private Dictionary<Owner, string> ownerValues = new Dictionary<Owner, string>()
+        private static Dictionary<Owner, string> ownerValues = new Dictionary<Owner, string>()
         {
-            { Owner.Daniel, "דניאל" },
-            { Owner.Yosi, "יוסי" },
+            { Owner.Omer, "עומר" },
+            { Owner.Natali, "נטלי" },
+            { Owner.Tomer, "תומר" },
             { Owner.Avi, "אבי" },
-            { Owner.Sharon, "שרון" }
+            { Owner.Leonid, "לאוניד" },
+            { Owner.Yuval, "יובל" },
+            { Owner.Ela, "אלה" },
+            { Owner.Chen, "חן" },
+            { Owner.Lior, "ליאור" },
+            { Owner.Oz, "עוז" },
+            { Owner.Orel, "אוראל" },
+            { Owner.Ofir, "אופיר" }
         };
 
         public Owner CaseOwnerEnum { get; set; }
