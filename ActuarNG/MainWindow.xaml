@@ -593,18 +593,12 @@
                                   ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                                   IsReadOnly="True"/>
 
-                                <DataGridTextColumn
-                                  Header="סטטוס"
-                                  Binding="{Binding StatusValue}"
-                                  ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                  IsReadOnly="False"/>
-
                                 <DataGridComboBoxColumn 
-                                    Header="Column With Predefined Values"
-                                    ItemsSource="{Binding ClientStatusEnums}"
-                                    SelectedValueBinding="{Binding Key}"
-                                    SelectedValuePath="Key"
-                                    DisplayMemberPath="Value" />
+                                    x:Name="clients_status_cell"
+                                    Header="סטטוס"
+                                    Width="Auto"
+                                    SelectedValueBinding="{Binding StatusValue}"/>
+
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

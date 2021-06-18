@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace Common.Models
 {
@@ -17,8 +18,6 @@ namespace Common.Models
 
     public class Client
     {
-        //public IEnumerable<Tuple<ClientStatus, string>> Statuses = ClientStatusEnums.Select(x => new { id = x.Key, title = x.Value });
-
         public static Dictionary<ClientStatus, string> ClientStatusEnums = new Dictionary<ClientStatus, string>()
         {
             { ClientStatus.NewClient, "לקוח חדש" },
@@ -29,7 +28,10 @@ namespace Common.Models
             { ClientStatus.Close, "סגור" },
         };
 
+        public static string[] Statuses = (ClientStatusEnums.Select(x => x.Value).ToArray());
+
         public string StatusValue{ get; set; }
+
         public ContactFormPerson ContactForm { get; set; }
         public List<CheckListRow> CheckListRows { get; set; }
     }

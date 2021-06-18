@@ -45,6 +45,7 @@ namespace ActuarNG
                     List<Client> clients = clientDAO.GetClients();
 
                     clients_status_DataGrid.ItemsSource = clients;
+                    clients_status_cell.ItemsSource = Client.Statuses;
                 }
                 if (settings_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
@@ -239,9 +240,9 @@ namespace ActuarNG
 
                 if (e.EditAction == DataGridEditAction.Commit)
                 {
-                    var editBox = e.EditingElement as TextBox;
                     Client client = e.Row.DataContext as Client;
-                    client.StatusValue = editBox.Text;
+                    var comboBox = e.EditingElement as ComboBox;
+                    client.StatusValue = comboBox.SelectedValue.ToString();
                     if (!Client.ClientStatusEnums.Any(x => x.Value == client.StatusValue))
                     {
                         throw new ArgumentException("not valid status");
