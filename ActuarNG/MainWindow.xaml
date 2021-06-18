@@ -11,6 +11,7 @@
     <Grid>
         <!-- Nav bar panel -->
         <TabControl
+            x:Name="tabs_control"
             Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
             SelectionChanged="TabControl_SelectionChanged">
             <!-- New Forms -->
@@ -64,13 +65,29 @@
                                     materialDesign:HintAssist.Hint="שם מטפל"
                                     HorizontalContentAlignment="Right" Grid.ColumnSpan="2">
                                 <ComboBoxItem
-                                        Content="דניאל" />
+                                        Content="עומר" />
                                 <ComboBoxItem
-                                        Content="יוסי" />
+                                        Content="נטלי" />
+                                <ComboBoxItem
+                                        Content="תומר" />
                                 <ComboBoxItem
                                         Content="אבי" />
                                 <ComboBoxItem
-                                        Content="שרון" />
+                                        Content="לאוניד" />
+                                <ComboBoxItem
+                                        Content="יובל" />
+                                <ComboBoxItem
+                                        Content="אלה" />
+                                <ComboBoxItem
+                                        Content="חן" />
+                                <ComboBoxItem
+                                        Content="ליאור" />
+                                <ComboBoxItem
+                                        Content="עוז" />
+                                <ComboBoxItem
+                                        Content="אוראל" />
+                                <ComboBoxItem
+                                        Content="אופיר" />
                             </ComboBox>
 
                             <CheckBox
@@ -540,7 +557,7 @@
                           FlowDirection="RightToLeft"
                           AutoGenerateColumns="False"
                           SelectionMode="Extended"
-                          CellEditEnding="status_DataGrid_CellEditEnding">
+                          CellEditEnding="status_DataGrid_CellEditEnding" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                   Binding="{Binding ContactForm.CaseOwnerValue}"
