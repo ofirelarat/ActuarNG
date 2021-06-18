@@ -9,7 +9,6 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Input;
 
 namespace ActuarNG
@@ -395,7 +394,7 @@ namespace ActuarNG
         {
             Client client = new Client()
             {
-                StatusValue = Client.clientStatusEnums[ClientStatus.YetToBegin],
+                StatusValue = Client.ClientStatusEnums[ClientStatus.YetToBegin],
                 ContactForm = contactFormDetails,
                 CheckListRows = checkListRows
             };
