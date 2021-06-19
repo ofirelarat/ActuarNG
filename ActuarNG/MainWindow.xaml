@@ -64,30 +64,6 @@
                                     x:Name="case_owner"
                                     materialDesign:HintAssist.Hint="שם מטפל"
                                     HorizontalContentAlignment="Right" Grid.ColumnSpan="2">
-                                <ComboBoxItem
-                                        Content="עומר" />
-                                <ComboBoxItem
-                                        Content="נטלי" />
-                                <ComboBoxItem
-                                        Content="תומר" />
-                                <ComboBoxItem
-                                        Content="אבי" />
-                                <ComboBoxItem
-                                        Content="לאוניד" />
-                                <ComboBoxItem
-                                        Content="יובל" />
-                                <ComboBoxItem
-                                        Content="אלה" />
-                                <ComboBoxItem
-                                        Content="חן" />
-                                <ComboBoxItem
-                                        Content="ליאור" />
-                                <ComboBoxItem
-                                        Content="עוז" />
-                                <ComboBoxItem
-                                        Content="אוראל" />
-                                <ComboBoxItem
-                                        Content="אופיר" />
                             </ComboBox>
 
                             <CheckBox
@@ -126,18 +102,6 @@
                                     Grid.Column="1"
                                     materialDesign:HintAssist.Hint="סוג תיק"
                                     HorizontalContentAlignment="Right" Grid.ColumnSpan="4" Margin="60,0,0,0">
-                                <ComboBoxItem
-                                                Content="בית משפט" />
-                                <ComboBoxItem
-                                                Content="בית דין רבני" />
-                                <ComboBoxItem
-                                                Content="בהסכמה למטרת גישור" />
-                                <ComboBoxItem
-                                                Content="למטרת הבעל בלבד" />
-                                <ComboBoxItem
-                                                Content="למטרת האישה בלבד" />
-                                <ComboBoxItem
-                                                Content="אחר" />
                             </ComboBox>
                             <DatePicker
                                   x:Name="case_decision_date"

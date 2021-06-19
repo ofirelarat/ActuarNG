@@ -44,6 +44,8 @@ namespace ActuarNG
                 else if (new_form_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
                     ClearNewClientFormTab();
+                    case_owner.ItemsSource = ContactFormPerson.Owners;
+                    case_type.ItemsSource = CaseDetails.CaseTypes;
                 }
                 else if (check_list_tab.IsSelected && e.Source.GetType() == typeof(TabControl))
                 {
@@ -307,10 +309,10 @@ namespace ActuarNG
         {
             ContactFormPerson contactFormDetails = new ContactFormPerson()
             {
-                CaseOwnerEnum = (Owner)case_owner.SelectedIndex,
+                CaseOwnerEnum = ContactFormPerson.GetOwnerKey(case_owner.SelectedValue.ToString()),
                 CaseInfo = new CaseDetails()
                 {
-                    CaseTypeEnum = (CaseType)case_type.SelectedIndex,
+                    CaseTypeEnum = CaseDetails.GetCaseTypeKey(case_type.SelectedValue.ToString()),
                     OpenDate = DateTime.Now,
                     DecisionDate = case_decision_date.SelectedDate ?? new DateTime(),
                     CaseReceivementDate = receiving_case_date.SelectedDate ?? new DateTime(),

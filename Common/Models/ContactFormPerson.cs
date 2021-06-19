@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Common.Models
 {
@@ -36,6 +37,10 @@ namespace Common.Models
             { Owner.Orel, "אוראל" },
             { Owner.Ofir, "אופיר" }
         };
+
+        public static string[] Owners = ownerValues.Select(x => x.Value).ToArray();
+
+        public static Func<string, Owner> GetOwnerKey = (string value) => ownerValues.FirstOrDefault(x => x.Value == value).Key;
 
         public Owner CaseOwnerEnum { get; set; }
         public string CaseOwnerValue { get { return ownerValues[CaseOwnerEnum]; } }

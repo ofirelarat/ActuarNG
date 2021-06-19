@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Common.Models
 {
@@ -15,7 +16,7 @@ namespace Common.Models
 
     public class CaseDetails
     {
-        private Dictionary<CaseType, string> caseTypeValue = new Dictionary<CaseType, string>()
+        private static Dictionary<CaseType, string> caseTypeValue = new Dictionary<CaseType, string>()
         {
             { CaseType.Court, "בית משפט" },
             { CaseType.RabbinicalCourt, "בית משפט רבני" },
@@ -24,6 +25,8 @@ namespace Common.Models
             { CaseType.ForWifePurposeOnly, "למטרת האישה בלבד" },
         };
 
+        public static string[] CaseTypes = caseTypeValue.Select(x => x.Value).ToArray();
+        public static Func<string, CaseType> GetCaseTypeKey = (string value) => caseTypeValue.FirstOrDefault(x => x.Value == value).Key;
 
         public DateTime OpenDate { get; set; }
         public CaseType CaseTypeEnum { get; set; }
