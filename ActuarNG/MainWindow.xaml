@@ -663,10 +663,10 @@
 
         <!-- long hand form for setting the message -->
         <materialDesign:Snackbar
-              x:Name="error_snack_bar"
+              x:Name="system_snack_bar"
               IsActive="False">
             <materialDesign:SnackbarMessage
-                x:Name="error_message_snack_bar"
+                x:Name="action_message_snack_bar"
                 Content=""
                 ActionContent="סגור"/>
         </materialDesign:Snackbar>

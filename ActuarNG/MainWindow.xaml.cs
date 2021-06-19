@@ -24,8 +24,8 @@ namespace ActuarNG
         {
             InitializeComponent();
 
-            error_snack_bar.IsActive = false;
-            error_message_snack_bar.ActionClick += (object sender, RoutedEventArgs e) => error_snack_bar.IsActive = false;
+            system_snack_bar.IsActive = false;
+            action_message_snack_bar.ActionClick += (object sender, RoutedEventArgs e) => system_snack_bar.IsActive = false;
 
             Style rowStyle = new Style(typeof(DataGridRow));
             rowStyle.Setters.Add(new EventSetter(DataGridRow.MouseDoubleClickEvent,
@@ -68,13 +68,13 @@ namespace ActuarNG
             }
             catch (FileNotFoundException)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
             }
             catch (Exception)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
 
@@ -91,16 +91,19 @@ namespace ActuarNG
                 {
                     AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
                 }
+
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה";
             }
             catch (FileNotFoundException)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
             }
             catch (Exception)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
 
@@ -117,16 +120,19 @@ namespace ActuarNG
                 {
                     AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
                 }
+
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה";
             }
             catch (FileNotFoundException)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
             }
             catch (Exception)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
 
@@ -143,16 +149,19 @@ namespace ActuarNG
                 {
                     AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
                 }
+
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה";
             }
             catch (FileNotFoundException)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
             }
             catch (Exception)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
 
@@ -170,16 +179,20 @@ namespace ActuarNG
                     AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
                 }
 
+
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה";
+
             }
             catch (FileNotFoundException)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך";
             }
             catch (Exception)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
 
@@ -206,13 +219,13 @@ namespace ActuarNG
             }
             catch (FileNotFoundException)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
             }
             catch (Exception)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
         private void check_list_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
@@ -231,16 +244,19 @@ namespace ActuarNG
                     clientDAO.UpdateClient(checkListSearchedClient);
                 }
 
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "הנתונים נשמרו בהצלחה";
+
             }
             catch (FileNotFoundException)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
             }
             catch (Exception)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
 
@@ -262,21 +278,25 @@ namespace ActuarNG
 
                     clientDAO.UpdateClient(client);
                 }
+
+
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "הנתונים נשמרו בהצלחה";
             }
             catch (FileNotFoundException)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "הקובץ לקוחות לא נמצא, בדוק בהגדרות מערכת את ההגדרות שלך";
             }
             catch (ArgumentException)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "סטטוס לא קיים במערכת, השינוי לא נשמר אנא נסה סטטוס אחר";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "סטטוס לא קיים במערכת, השינוי לא נשמר אנא נסה סטטוס אחר";
             }
             catch (Exception)
             {
-                error_snack_bar.IsActive = true;
-                error_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
+                system_snack_bar.IsActive = true;
+                action_message_snack_bar.Content = "שגיאה כללית במערכת, אנא נסה שוב";
             }
         }
 
