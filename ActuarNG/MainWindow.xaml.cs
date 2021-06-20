@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
 using System.Windows.Input;
+using MaterialDesignThemes.Wpf;
 
 namespace ActuarNG
 {
@@ -26,6 +27,7 @@ namespace ActuarNG
 
             system_snack_bar.IsActive = false;
             action_message_snack_bar.ActionClick += (object sender, RoutedEventArgs e) => system_snack_bar.IsActive = false;
+            system_snack_bar.MessageQueue = new SnackbarMessageQueue(TimeSpan.FromSeconds(5));
 
             Style rowStyle = new Style(typeof(DataGridRow));
             rowStyle.Setters.Add(new EventSetter(DataGridRow.MouseDoubleClickEvent,
@@ -78,106 +80,22 @@ namespace ActuarNG
 
         private void NewPersonContactFromGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                ContactFormPerson contactFormDetails = CreateContactDetails();
-                DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
-
-                docxGenerator.GenerateNewPersonContactForm();
-                if (IsSavingClientData.IsChecked.Value)
-                {
-                    AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
-                }
-
-                DisplaySnackbar("הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה");
-            }
-            catch (FileNotFoundException)
-            {
-                DisplaySnackbar("התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך");
-            }
-            catch (Exception)
-            {
-                DisplaySnackbar("שגיאה כללית במערכת, אנא נסה שוב");
-            }
+            OnSaveNewFormTemplate(FormsType.ContactForm);
         }
 
         private void NewPersonEconomyFormGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                ContactFormPerson contactFormDetails = CreateContactDetails();
-                DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
-
-                docxGenerator.GenerateNewPersonEconomyDetailsForm();
-
-                if (IsSavingClientData.IsChecked.Value)
-                {
-                    AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
-                }
-
-                DisplaySnackbar("הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה");
-            }
-            catch (FileNotFoundException)
-            {
-                DisplaySnackbar("התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך");
-            }
-            catch (Exception)
-            {
-                DisplaySnackbar("שגיאה כללית במערכת, אנא נסה שוב");
-            }
+            OnSaveNewFormTemplate(FormsType.EconomyDetails);
         }
 
         private void NewPersonEmpowerFormGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                ContactFormPerson contactFormDetails = CreateContactDetails();
-                DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
-
-                docxGenerator.GenerateNewPersonEmpowerForm();
-
-                if (IsSavingClientData.IsChecked.Value)
-                {
-                    AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
-                }
-
-                DisplaySnackbar("הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה");
-            }
-            catch (FileNotFoundException)
-            {
-                DisplaySnackbar("התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך");
-            }
-            catch (Exception)
-            {
-                DisplaySnackbar("שגיאה כללית במערכת, אנא נסה שוב");
-            }
+            OnSaveNewFormTemplate(FormsType.EmpowerForm);
         }
 
         private void NewPersonFullFormGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                ContactFormPerson contactFormDetails = CreateContactDetails();
-                DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
-
-                docxGenerator.GenerateNewPersonFullForm();
-
-                if (IsSavingClientData.IsChecked.Value)
-                {
-                    AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
-                }
-
-                DisplaySnackbar("הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה");
-
-            }
-            catch (FileNotFoundException)
-            {
-                DisplaySnackbar("התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך");
-            }
-            catch (Exception)
-            {
-                DisplaySnackbar("שגיאה כללית במערכת, אנא נסה שוב");
-            }
+            OnSaveNewFormTemplate(FormsType.FullForm);
         }
 
         private Client checkListSearchedClient = null;
@@ -287,6 +205,32 @@ namespace ActuarNG
                 isSourceFromOtherTab = true;
                 tabs_control.SelectedIndex = 0;
             }));
+        }
+
+        private void OnSaveNewFormTemplate(FormsType formType)
+        {
+            try
+            {
+                ContactFormPerson contactFormDetails = CreateContactDetails();
+                DocxGenerator docxGenerator = new DocxGenerator(contactFormDetails, new ConfigMgr());
+
+                docxGenerator.GenerateNewForm(formType);
+
+                if (IsSavingClientData.IsChecked.Value)
+                {
+                    AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
+                }
+
+                DisplaySnackbar("הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה");
+            }
+            catch (FileNotFoundException)
+            {
+                DisplaySnackbar("התקיית קבצים לא קיימת, בדוק בהגדרות מערכת את ההגדרות שלך");
+            }
+            catch (Exception)
+            {
+                DisplaySnackbar("שגיאה כללית במערכת, אנא נסה שוב");
+            }
         }
 
         private void SaveSettingsConfig_Click(object sender, RoutedEventArgs e)

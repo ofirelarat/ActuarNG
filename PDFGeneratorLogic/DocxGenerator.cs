@@ -3,9 +3,19 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using SettingMgr;
 using System;
+using System.Diagnostics;
+using System.IO;
 
 namespace PDFGeneratorLogic
 {
+    public enum FormsType
+    {
+        ContactForm,
+        EconomyDetails,
+        EmpowerForm,
+        FullForm
+    }
+
     public class DocxGenerator
     {
         private ContactFormPerson contactFormPerson;
@@ -18,31 +28,10 @@ namespace PDFGeneratorLogic
             targetPath = configMgr.GetDestenationPath();
         }
 
-        public void GenerateNewPersonContactForm()
+        public void GenerateNewForm(FormsType fileType)
         {
-            const string sourceFile = @"./resources/new_person_contact_form_template.docx";
-            string destFile = System.IO.Path.Combine(targetPath, $"טופס_הזמנת_עבודה_{contactFormPerson.Person_1.Id}.docx");
-
-            WordprocessingDocument wordprocessingDocument;
-      
-            CopyTemplateFile(sourceFile, destFile);
-
-            wordprocessingDocument = WordprocessingDocument.Open(destFile, true);
-            Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
-
-            var xml = body.OuterXml;
-            string tokenziedXML = TokenizeNewFormDoc(xml);
-
-            body.InnerXml = tokenziedXML;
-
-            wordprocessingDocument.Close();
-            wordprocessingDocument.Dispose();
-        }
-
-        public void GenerateNewPersonEconomyDetailsForm()
-        {
-            const string sourceFile = @"./resources/new_person_economy_details_form_template.docx";
-            string destFile = System.IO.Path.Combine(targetPath, $"טופס_הזנת_נתונים_{contactFormPerson.Person_1.Id}.docx");
+            string sourceFile = GetSourceFileName(fileType);
+            string destFile = GetDestFileName(fileType);
 
             WordprocessingDocument wordprocessingDocument;
 
@@ -60,46 +49,14 @@ namespace PDFGeneratorLogic
             wordprocessingDocument.Dispose();
         }
 
-        public void GenerateNewPersonEmpowerForm()
+        public void OpenDocumentFile(FormsType fileType)
         {
-            const string sourceFile = @"./resources/new_person_empower_form_template.docx";
-            string destFile = System.IO.Path.Combine(targetPath, $"טופס_יפוי_כוח_{contactFormPerson.Person_1.Id}.docx");
+            string destFile = GetDestFileName(fileType);
 
-            WordprocessingDocument wordprocessingDocument;
-
-            CopyTemplateFile(sourceFile, destFile);
-
-            wordprocessingDocument = WordprocessingDocument.Open(destFile, true);
-            Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
-
-            var xml = body.OuterXml;
-            string tokenziedXML = TokenizeNewFormDoc(xml);
-
-            body.InnerXml = tokenziedXML;
-
-            wordprocessingDocument.Close();
-            wordprocessingDocument.Dispose();
-        }
-
-        public void GenerateNewPersonFullForm()
-        {
-            const string sourceFile = @"./resources/new_person_full_form_template.docx";
-            string destFile = System.IO.Path.Combine(targetPath, $"טופס_לקוח_חדש_{contactFormPerson.Person_1.Id}.docx");
-
-            WordprocessingDocument wordprocessingDocument;
-
-            CopyTemplateFile(sourceFile, destFile);
-
-            wordprocessingDocument = WordprocessingDocument.Open(destFile, true);
-            Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
-
-            var xml = body.OuterXml;
-            string tokenziedXML = TokenizeNewFormDoc(xml);
-
-            body.InnerXml = tokenziedXML;
-
-            wordprocessingDocument.Close();
-            wordprocessingDocument.Dispose();
+            Process wordProcess = new Process();
+            wordProcess.StartInfo.FileName = destFile;
+            wordProcess.StartInfo.UseShellExecute = true;
+            wordProcess.Start();
         }
 
         private void CopyTemplateFile(string sourceFilePath, string destFilePath)
@@ -126,6 +83,40 @@ namespace PDFGeneratorLogic
                                             .Replace($"work_essence", contactFormPerson.WorkEssence);
 
             return generatedHTML;
+        }
+
+        private string GetSourceFileName(FormsType fileType)
+        {
+            switch (fileType)
+            {
+                case FormsType.ContactForm:
+                    return @"./resources/new_person_contact_form_template.docx";
+                case FormsType.EconomyDetails:
+                    return @"./resources/new_person_economy_details_form_template.docx";
+                case FormsType.EmpowerForm:
+                    return @"./resources/new_person_empower_form_template.docx";
+                case FormsType.FullForm:
+                    return @"./resources/new_person_full_form_template.docx";
+                default:
+                    throw new FileNotFoundException($"file type {fileType} not exist");
+            }
+        }
+
+        private string GetDestFileName(FormsType fileType)
+        {
+            switch (fileType)
+            {
+                case FormsType.ContactForm:
+                    return Path.Combine(targetPath, $"טופס_הזמנת_עבודה_{contactFormPerson.Person_1.Id}.docx");
+                case FormsType.EconomyDetails:
+                    return Path.Combine(targetPath, $"טופס_הזנת_נתונים_{contactFormPerson.Person_1.Id}.docx");
+                case FormsType.EmpowerForm:
+                    return Path.Combine(targetPath, $"טופס_יפוי_כוח_{contactFormPerson.Person_1.Id}.docx");
+                case FormsType.FullForm:
+                    return Path.Combine(targetPath, $"טופס_לקוח_חדש_{ contactFormPerson.Person_1.Id}.docx");
+                default:
+                    throw new FileNotFoundException($"file type {fileType} not exist");
+            }
         }
     }
 }
