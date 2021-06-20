@@ -76,7 +76,6 @@ namespace ActuarNG
             }
         }
 
-
         private void NewPersonContactFromGenerateBtn_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -199,7 +198,7 @@ namespace ActuarNG
                 }
                 else
                 {
-                    check_list_not_found_placement.Text = "הלקוח לא נמצא";
+                    DisplaySnackbar("לקוח לא נמצא");
                 }
             }
             catch (FileNotFoundException)
@@ -211,6 +210,7 @@ namespace ActuarNG
                 DisplaySnackbar("שגיאה כללית במערכת, אנא נסה שוב");
             }
         }
+
         private void check_list_DataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
         {
             try

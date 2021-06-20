@@ -433,13 +433,6 @@
                             Style="{StaticResource MaterialDesignHeadline6TextBlock}"
                             HorizontalAlignment="Right"
                             Text="" />
-                        <TextBlock
-                            Grid.Column="1"
-                            Grid.Row="1"
-                            x:Name="check_list_not_found_placement"
-                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                            HorizontalAlignment="Right"
-                            Text="" />
                     </Grid>
                     <Grid  
                         Grid.Row="3"
