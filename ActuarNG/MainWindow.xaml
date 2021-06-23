@@ -350,6 +350,13 @@
                                   Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                   Content="טופס מלא" Click="NewPersonFullFormGenerateBtn_Click" />
                     </Grid>
+
+                    <materialDesign:Snackbar
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        x:Name="generate_forms_snack_bar"
+                        IsActive="False">
+                    </materialDesign:Snackbar>
                 </Grid>
             </TabItem>
             <!-- Client Check List -->
@@ -654,7 +661,6 @@
             </TabItem>
         </TabControl>
 
-        <!-- long hand form for setting the message -->
         <materialDesign:Snackbar
               x:Name="system_snack_bar"
               IsActive="False">

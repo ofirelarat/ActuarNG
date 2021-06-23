@@ -20,14 +20,14 @@ namespace ActuarNG
     public partial class MainWindow : Window
     {
         bool isSourceFromOtherTab = false;
+        private SnackbarMessageQueue generateNewFormMessageQueue = new SnackbarMessageQueue(TimeSpan.FromSeconds(5));
+        Action<Tuple<DocxGenerator, FormsType>> generate_forms_snack_barAction;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            system_snack_bar.IsActive = false;
-            action_message_snack_bar.ActionClick += (object sender, RoutedEventArgs e) => system_snack_bar.IsActive = false;
-            system_snack_bar.MessageQueue = new SnackbarMessageQueue(TimeSpan.FromSeconds(5));
+            InitSnackbars();
 
             Style rowStyle = new Style(typeof(DataGridRow));
             rowStyle.Setters.Add(new EventSetter(DataGridRow.MouseDoubleClickEvent,
@@ -146,7 +146,6 @@ namespace ActuarNG
                 }
 
                 DisplaySnackbar("הנתונים נשמרו בהצלחה");
-
             }
             catch (FileNotFoundException)
             {
@@ -176,7 +175,6 @@ namespace ActuarNG
 
                     clientDAO.UpdateClient(client);
                 }
-
 
                 DisplaySnackbar("הנתונים נשמרו בהצלחה");
             }
@@ -221,7 +219,11 @@ namespace ActuarNG
                     AddNewClient(contactFormDetails, Defaults.CheckListDefaultCollection);
                 }
 
-                DisplaySnackbar("הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה");
+                generate_forms_snack_bar.IsActive = true;
+                generate_forms_snack_bar.MessageQueue.Enqueue("הנתונים נשמרו, ונוצר טופס אוטומטי מתאים בהצלחה",
+                                                                "פתח",
+                                                                generate_forms_snack_barAction,
+                                                                new Tuple<DocxGenerator, FormsType>(docxGenerator, formType));
             }
             catch (FileNotFoundException)
             {
@@ -345,6 +347,22 @@ namespace ActuarNG
 
             IClientDAO clientDAO = new ClientFileDAO(new ConfigMgr());
             clientDAO.AddNewClient(client);
+        }
+
+        private void InitSnackbars()
+        {
+            system_snack_bar.IsActive = false;
+            action_message_snack_bar.ActionClick += (object sender, RoutedEventArgs e) => system_snack_bar.IsActive = false;
+            system_snack_bar.MessageQueue = new SnackbarMessageQueue(TimeSpan.FromSeconds(5));
+
+            generate_forms_snack_bar.IsActive = false;
+            generate_forms_snack_bar.MessageQueue = generateNewFormMessageQueue;
+            generate_forms_snack_barAction = (args) =>
+            {
+                generate_forms_snack_bar.IsActive = false;
+                args.Item1.OpenDocumentFile(args.Item2);
+                generate_forms_snack_bar.MessageQueue.Clear();
+            };
         }
 
         private void DisplaySnackbar(string message)

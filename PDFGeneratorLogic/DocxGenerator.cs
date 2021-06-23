@@ -5,6 +5,7 @@ using SettingMgr;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace PDFGeneratorLogic
 {
@@ -53,10 +54,13 @@ namespace PDFGeneratorLogic
         {
             string destFile = GetDestFileName(fileType);
 
-            Process wordProcess = new Process();
-            wordProcess.StartInfo.FileName = destFile;
-            wordProcess.StartInfo.UseShellExecute = true;
-            wordProcess.Start();
+            Task.Run(() =>
+            {
+                Process wordProcess = new Process();
+                wordProcess.StartInfo.FileName = destFile;
+                wordProcess.StartInfo.UseShellExecute = true;
+                wordProcess.Start();
+            });
         }
 
         private void CopyTemplateFile(string sourceFilePath, string destFilePath)
